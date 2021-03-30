@@ -1,0 +1,2 @@
+reports/kiel-mode-speed/data/tiles/* filter=lfs diff=lfs merge=lfs -text
+reports/kiel-mode-speed/data/tiles/** filter=lfs diff=lfs merge=lfs -text
