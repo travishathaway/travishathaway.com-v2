@@ -2,13 +2,22 @@
 layout: layouts/base.njk
 templateClass: tmpl-post
 ---
-<h1>{{ title }}</h1>
 
-<time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
-{%- for tag in tags | filterTagList -%}
-{%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
-<a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
-{%- endfor %}
+{%- if show_featured_image %}
+<div class="post-main-image" style="background-image: url({{featured_image}}.webp)">
+  <h1 class="post-title-image">{{ title }}</h1>
+  <div class="post-extra">
+    <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+    {%- for tag in tags | filterTagList -%}
+    {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
+    <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+    {%- endfor %}
+  </div>
+</div>
+{{ feature_image_credits | safe }}
+{%- else %}
+<h1>{{ title }}</h1>
+{%- endif %}
 
 {{ content | safe }}
 

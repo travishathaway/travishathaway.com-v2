@@ -6,6 +6,36 @@
   --navy: #17050F;
   --blue: #082840;
   --white: #fff;
+  --reading-text-width: 37.5em; /* 600px /16 */
+}
+
+/** Fonts **/
+@font-face {
+  font-family: 'PT Serif';
+  src: url('fonts/PTF_regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PT Serif';
+  src: url('fonts/PTF_bold.woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PT Serif';
+  src: url('fonts/PTF_italic.woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'PT Serif';
+  src: url('fonts/PTF_bolditalic.woff');
+  font-weight: bold;
+  font-style: italic;
 }
 
 /* Global stylesheet */
@@ -13,25 +43,36 @@
   box-sizing: border-box;
 }
 
+h1, h2, h3 {
+  font-family: 'PT Serif', serif;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, system-ui, sans-serif;
+  font-family: 'PT Serif', serif;
   color: var(--darkgray);
   background-color: var(--white);
 }
+
+p, li {
+  font-size: 1.1em;
+  font-family: 'PT Serif', serif;
+}
+
 p:last-child {
   margin-bottom: 0;
 }
 p,
 .tmpl-post li,
 img {
-  max-width: 37.5em; /* 600px /16 */
+  max-width: var(--reading-text-width);
 }
 p,
 .tmpl-post li {
   line-height: 1.45;
+  margin-top: 0.4em;
 }
 a[href] {
   color: var(--blue);
@@ -39,13 +80,47 @@ a[href] {
 a[href]:visited {
   color: var(--navy);
 }
+
+.site-logo {
+  display: flex;
+  flex-wrap: wrap;
+  background-image: url('../img/art_niveau_logo_small.png');
+  background-size: 100% auto;
+  width: 100px;
+  height: 60px;
+  margin : 1em 1em;
+}
+
 main {
   padding: 1rem;
 }
+
+@media only screen and (min-width: 768px) {
+  main {
+    padding-left: 2.5rem;
+  }
+
+  .site-logo {
+    margin: 1em 2.5em;
+  }
+
+  .side-panel-image {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 12.5%;
+    background-image: url(../img/art_niveau_vertical.png);
+    background-repeat: no-repeat;
+  }
+}
+
 main :first-child {
   margin-top: 0;
 }
 header {
+  display: flex;
+  align-items: center;
   border-bottom: 1px dashed var(--lightgray);
 }
 header:after {
@@ -155,18 +230,12 @@ code {
   padding: 0;
 }
 .postlist-item {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  counter-increment: start-from -1;
+  /*counter-increment: start-from -1;*/
   line-height: 1.8;
+  margin-top: 10px;
 }
-.postlist-item:before {
-  display: inline-block;
-  pointer-events: none;
-  content: "" counter(start-from, decimal-leading-zero) ". ";
-  line-height: 100%;
-  text-align: right;
+.postlist-item:first {
+  margin-top: 0px;
 }
 .postlist-date,
 .postlist-item:before {
@@ -177,8 +246,8 @@ code {
   word-spacing: -0.5px;
 }
 .postlist-link {
-  padding-left: .25em;
-  padding-right: .25em;
+  padding-left: 0em;
+  padding-right: 0em;
   text-underline-position: from-font;
   text-underline-offset: 0;
   text-decoration-thickness: 1px;
@@ -186,19 +255,71 @@ code {
 .postlist-item-active .postlist-link {
   font-weight: bold;
 }
+.postlist-item-description {
+  max-width: var(--reading-text-width);
+}
 .tmpl-home .postlist-link {
   font-size: 1.1875em; /* 19px /16 */
   font-weight: 700;
 }
 
+.tmpl-home, .tmpl-post {
+  max-width: calc(var(--reading-text-width) + 5em);
+}
+
+/** Post **/
+
+.post-extra {
+  color: var(--lightgray);
+  z-index: 101;
+  position: absolute;
+  bottom: 0px;
+  margin-bottom: 1em;
+  padding: 30px 35px 0px;
+  font-weight: bold;
+}
+
+.post-main-image {
+  margin-bottom: 2em;
+  position: relative;
+  width: var(--reading-text-width);
+  width: 100%;
+  height: 300px;
+  overflow-y: hidden;
+  background-size: cover;
+}
+
+.post-main-image a[href].post-tag:hover,
+.post-main-image a[href].post-tag:focus {
+  background-color: var(--darkgray);
+}
+
+.post-main-image img {
+  max-width: 100%;
+}
+
+.post-title-image {
+  width: 100%;
+  color: var(--lightgray);
+  margin-bottom: 0px;
+  padding: 40px 35px 45px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 100;
+  line-height: 1.5em;
+  background: -moz-linear-gradient(top,rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%);
+  background: -webkit-linear-gradient(top,rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%);
+  background: linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0.85) 100%);
+}
 
 /* Tags */
 .post-tag {
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
-  font-size: 0.6875em; /* 11px /16 */
+  font-size: 0.625em; /* 11px /16 */
   padding: 0.09090909090909em 0.3636363636364em; /* 1px 4px /11 */
   margin-left: 0.8em; /* 8px /10 */
   color: var(--darkgray);
