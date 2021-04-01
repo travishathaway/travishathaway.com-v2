@@ -3,7 +3,7 @@ author: Travis Hathaway
 title: Creating a Choropleth Map with Crime and Population Data
 date: 2017-03-13
 featured_image: "/img/post_images/map_background"
-featured_image_small: "/img/post_images/map_background_small"
+featured_image_thumbnail: "/img/post_images/map_background_small"
 show_featured_image: true
 description: Look at how I used several differnt data sources to create a map of Portland's crime data with a link to the live example.
 tags: 

@@ -18,11 +18,11 @@ Obviously, tastes in music are highly subjective, and everyone has their favorit
 
 ## The journey begins...
 
-My tastes in music really started to change around when I was 13 years old. At this time of my life, I was making lots of new friends who were introducing me to some really interesting bands. For first time in my life, the music I listened to did not come from the radio but from recommendations. The first truly weird album I bought at this time was Mr. Bungle's self title. This album is already weird enough, but it was especially so for a 13 year old who's previous record collection only included, "Dr. Dre", "Eminem", "Greenday" and "The Offspring".
+My tastes in music really started to change around 13 years of age. At this time of my life, I was making lots of new friends who were introducing me to some really interesting bands. For the first time in my life, the music I listened to did not come from the radio but from recommendations of friends. The first truly weird album I bought at this time was Mr. Bungle's self title. This album enough of an abberation, but it was especially so for a 13 year old who's previous record collection only included, "Dr. Dre", "Eminem", "Greenday" and "The Offspring".
 
 As I moved on to high school, I started playing guitar, and my interest in metal balloned. This also began an obsession I had with guitar solos, and during this phase, I remember having so much disdain for any song without one, "wait... there's no solo in this song? Do people even call this music?" This obsession had the nice side-effect of pushing me as a player, but I am very happy that I finally got over it.
 
-After highschool is when I really started to branch out in to playing other genres of music. I discovered the local Jazz radio station in Portland. I took a really cool class in college called, "Funk Guitar". I actually began trying to sing in a manner that did not involve screaming my guts out in front of a microphone. For lack of a better term, my interests were *diversifying*. So, it was around this time that I began discovering the artist I am about to introduce...
+After highschool is when I really started to branch out in to playing other genres of music. I discovered the local Jazz radio station in Portland. I took a really cool class in college called "Funk Guitar". I actually began trying to sing in a manner that did not involve screaming my guts out in front of a microphone. For lack of a better term, my interests were *diversifying*. So, it was around this time that I began discovering the artist I am about to introduce...
 
 ## Ariel Pink
 
@@ -62,9 +62,9 @@ To get an idea of what this sounds like, check out Ariel Pink's "Are You Gonna L
   </span>
 </div>
 
-John Maus also belongs to the genre of "Lofi", and his albums are filled with all kinds of idiosyncrasies including the musical arrangements to the lyrical content. The musical arrangements typically involve at least a drum machine, several synths, a bass and Maus' booming echoing vocals. When I heard these arrangements, it helped nudge me in to trying an approach to composition that didn't involve using a guitar (pretty big shock for a guitar player). The second of Maus' idiosyncrasies were his lyrics. Sometimes these lyrics seemed to be expressing a serious political statement like in his song, "Rights for Gays", but often he will quickly return to the realm of sarcasm and absurdity as is the case with one of his more recent songs, "Your Pets are Going to Die".
+John Maus also belongs to the same genre of "Lofi", and his albums are filled with all kinds of idiosyncrasies. The musical arrangements typically involve a drum machine, several synths, a bass and Maus' booming, echoing vocals. When I heard these arrangements, it helped nudge me into trying an approach to composition that didn't involve using a guitar (pretty big shock for a guitar player). The second of Maus' idiosyncrasies were his lyrics. Sometimes these lyrics seemed to be expressing a serious political statement like in his song, "Rights for Gays", but often he will quickly return to the realm of sarcasm and absurdity as is the case with one of his more recent songs, "Your Pets are Going to Die".
 
-All of Maus' albums also seem to have a sort melancholic aspect laying at their foundation. I simply could not name a Maus song that is particularly bright and poppy. For me particularly, this is an aspect in music I am particularly drawn to. When I look at a lot of music I have written, I would say the majority is certainly melancholic and gloomy.
+All of Maus' albums also seem to have a sort of melancholic aspect laying at their foundation. I simply could not name a Maus song that is particularly bright and poppy. For me particularly, this is an aspect of music I am particularly drawn to. When I look at a lot of music I have written, I would say that the majority is certainly melancholic and gloomy.
 
 What better way to explore this melancholy and gloom than with a song about rockets literally flying towards your house.
 

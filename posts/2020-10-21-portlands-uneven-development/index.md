@@ -4,9 +4,9 @@ title: "The Uneven Landscape of Portland's Urban Environment"
 date: 2020-10-21
 description: This essay explores Portland's vegetation cover and how it reveals the city's uneven ecological and social landscape.
 featured_image: "/img/post_images/NDVI_cropped"
-featured_image_small: "/img/post_images/NDVI_cropped_small"
+featured_image_thumbnail: "/img/post_images/NDVI_cropped_small"
 show_featured_image: true
-tags: [political ecology, portland, academic]
+tags: [political ecology, gis]
 layout: layouts/post.njk
 ---
 

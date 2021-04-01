@@ -6,34 +6,36 @@
   --navy: #17050F;
   --blue: #082840;
   --white: #fff;
-  --reading-text-width: 37.5em; /* 600px /16 */
+  --reading-text-width: 70ch; /* 600px /16 */
+  --reading-text-width-small: 30em;
+  --dark-red: #993c3c;
 }
 
 /** Fonts **/
 @font-face {
   font-family: 'PT Serif';
-  src: url('fonts/PTF_regular.woff') format('woff');
+  src: url({{'/css/fonts/PTF_regular.woff' | url }}) format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'PT Serif';
-  src: url('fonts/PTF_bold.woff');
+  src: url({{'/css/fonts/PTF_bold.woff' | url }}) format('woff');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'PT Serif';
-  src: url('fonts/PTF_italic.woff');
+  src: url({{'/css/fonts/PTF_italic.woff' | url }}) format('woff');
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'PT Serif';
-  src: url('fonts/PTF_bolditalic.woff');
+  src: url({{'/css/fonts/PTF_bolditalic.woff' | url }}) format('woff');
   font-weight: bold;
   font-style: italic;
 }
@@ -75,49 +77,32 @@ p,
   margin-top: 0.4em;
 }
 a[href] {
-  color: var(--blue);
+  color: var(--dark-red);
+  text-decoration: none;
 }
 a[href]:visited {
-  color: var(--navy);
+  color: var(--dark-red);
 }
 
 .site-logo {
+  background-image: url({{'/img/art_niveau_logo_zoom_light.png' | url }});
   display: flex;
   flex-wrap: wrap;
-  background-image: url('../img/art_niveau_logo_small.png');
-  background-size: 100% auto;
-  width: 100px;
+  background-size: 100px 60px;
+  width: 70px;
   height: 60px;
-  margin : 1em 1em;
+  margin: 1em 1em;
+  background-repeat: no-repeat;
+  background-position-x: -16px;
+  border-radius: 30px;
+  background-position-y: -2px;
+  border: solid 2px #eee;
 }
 
 main {
   padding: 1rem;
 }
 
-@media only screen and (min-width: 768px) {
-  main {
-    padding-left: 2.5rem;
-  }
-
-  .site-logo {
-    margin: 1em 2.5em;
-  }
-
-  .side-panel-image {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 12.5%;
-    background-image: url(../img/art_niveau_vertical.png);
-    background-repeat: no-repeat;
-  }
-}
-
-main :first-child {
-  margin-top: 0;
-}
 header {
   display: flex;
   align-items: center;
@@ -232,7 +217,9 @@ code {
 .postlist-item {
   /*counter-increment: start-from -1;*/
   line-height: 1.8;
-  margin-top: 10px;
+  margin-top: 2em;
+  border-bottom: solid 1px #CCC;
+  padding-bottom: 2em;
 }
 .postlist-item:first {
   margin-top: 0px;
@@ -258,13 +245,26 @@ code {
 .postlist-item-description {
   max-width: var(--reading-text-width);
 }
+.postlist-item-img img {
+  width: 200px;
+  height: 100px;
+  text-align: center;
+}
+.postlist-item-img {
+  width: 200px;
+  height: 100px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .tmpl-home .postlist-link {
   font-size: 1.1875em; /* 19px /16 */
   font-weight: 700;
 }
 
 .tmpl-home, .tmpl-post {
-  max-width: calc(var(--reading-text-width) + 5em);
+  max-width: var(--reading-text-width);
 }
 
 /** Post **/
@@ -300,7 +300,7 @@ code {
 
 .post-title-image {
   width: 100%;
-  color: var(--lightgray);
+  color: var(--white);
   margin-bottom: 0px;
   padding: 40px 35px 45px;
   position: absolute;
@@ -365,4 +365,70 @@ a[href].direct-link:focus:visited,
 :hover > a[href].direct-link,
 :hover > a[href].direct-link:visited {
   color: #aaa;
+}
+
+#refs div {
+  margin-top: 2em;
+}
+
+.blog-image-right {
+  float: right;
+  width: 50%;
+  margin-left: 2em;
+}
+
+.blog-image-right img {
+  width: 100%;
+}
+
+.blog-image-left {
+  float: right;
+  width: 50%;
+  margin-left: 2em;
+}
+
+.blog-image-left img {
+  width: 100%;
+}
+
+/** Rules for big screens **/
+@media only screen and (min-width: 960px) {
+  main {
+    margin-left: 9.45rem;
+    max-width: var(--reading-text-width);
+  }
+
+  .site-logo {
+    margin: 1em 2.5em;
+  }
+
+}
+
+/** Rules for big screens **/
+@media only screen and (min-width: 768px) {
+  .side-panel-image {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 12.5%;
+    background-image: url({{'/img/art_niveau_vertical_v2.png' | url }});
+    background-repeat: no-repeat;
+  }
+
+  .postlist-item-img {
+    float: right;
+    width: 200px;
+    height: 100px;
+    overflow: hidden;
+    margin-top: 1em;
+    margin-left: 1em;
+    border-radius: 5px;
+  }
+  .postlist-item-img img {
+    float: right;
+    width: 200px;
+    height: 100px;
+    overflow: hidden;
+  }
 }

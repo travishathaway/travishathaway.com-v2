@@ -4,7 +4,7 @@ title: The Two Faces of Wind Energy Development in Oregon and Oaxaca
 date: 2020-02-26
 description: "In this longer, essay style post, I compare wind energy development in two different regions of the world: Oregon and Oaxaca."
 featured_image: "/img/post_images/OR_Wind_Turbines"
-featured_image_small: "/img/post_images/OR_Wind_Turbines_small"
+featured_image_thumbnail: "/img/post_images/OR_Wind_Turbines_small"
 show_featured_image: true
 tags: [wind energy, sustainability, academic]
 layout: layouts/post.njk

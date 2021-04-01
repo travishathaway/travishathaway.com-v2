@@ -2,11 +2,11 @@
 author: Travis Hathaway
 title: "Investigating Transportation Mode Speeds in Kiel"
 date: 2020-12-10
-description: With this article, I want to propose a method for investigate how fast it takes to travel using different modes in the city of Kiel in Germany.
+description: With this article, I want to propose a method for investigating how fast it takes to travel using different modes in the city of Kiel in Germany.
 featured_image: "/img/post_images/article_splash"
-featured_image_small: "/img/post_images/article_splash_small"
+featured_image_thumbnail: "/img/post_images/article_splash_small"
 show_featured_image: true
-tags: [gis, kiel, academic, mobility]
+tags: [gis, mobility]
 layout: layouts/post.njk
 ---
 
@@ -86,6 +86,7 @@ In order to solve this problem, I again turned to the OSM data to see if their c
       <source srcset="img/kiel_city_areas.jpg 800w" type="image/jpeg" />
       <img src="img/kiel_city_areas.jpg" loading="lazy" alt="Kiel Residential Areas" style="text-align: center;width: 60%" />
     </picture>
+  </a>
 </p>
 <p style="text-align: center;">
   <span style="font-size: 0.8em;">

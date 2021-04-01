@@ -5,6 +5,7 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const CleanCSS = require("clean-css");
 
 module.exports = function(eleventyConfig) {
   // Add plugins
@@ -44,7 +45,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("filterTagList", tags => {
     // should match the list in tags.njk
     return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
-  })
+  });
+
+  eleventyConfig.addFilter("cssmin", function(code) {
+    return new CleanCSS({}).minify(code).styles;
+  });
 
   // Create an array of all tags
   eleventyConfig.addCollection("tagList", function(collection) {

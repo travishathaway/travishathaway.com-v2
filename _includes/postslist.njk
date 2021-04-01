@@ -1,12 +1,19 @@
 <div class="postlist">
 {% for post in postslist | reverse %}
   <div class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+    <div class="postlist-item-img">
+      <picture>
+        <source srcset="{{post.data.featured_image_thumbnail}}.webp" type="image/webp" />
+        <source srcset="{{post.data.featured_image_thumbnail}}.jpg" type="image/jpeg" />
+        <img src="{{post.data.featured_image_thumbnail}}.jpg" />
+      </picture>
+    </div>
     <div class="postlist-item-title">
       <a href="{{ post.url | url }}" class="postlist-link">
           {% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}
       </a>
     </div>
-    <div class="postlist-tiem-extra">
+    <div class="postlist-time-extra">
       <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
       {% for tag in post.data.tags | filterTagList %}
         {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
