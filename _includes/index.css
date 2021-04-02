@@ -9,6 +9,7 @@
   --reading-text-width: 70ch; /* 600px /16 */
   --reading-text-width-small: 30em;
   --dark-red: #993c3c;
+  --sidebar-width: 12em;
 }
 
 /** Fonts **/
@@ -57,7 +58,6 @@ body {
   color: var(--darkgray);
   background-color: var(--white);
 }
-
 p, li {
   font-size: 1.1em;
   font-family: 'PT Serif', serif;
@@ -97,10 +97,6 @@ a[href]:visited {
   border-radius: 30px;
   background-position-y: -2px;
   border: solid 2px #eee;
-}
-
-main {
-  padding: 1rem;
 }
 
 header {
@@ -183,7 +179,7 @@ code {
 .home {
   padding: 0 1rem;
   float: left;
-  margin: 1rem 0; /* 16px /16 */
+  /* margin: 1rem 0; /* 16px /16 */
   font-size: 1em; /* 16px /16 */
 }
 .home :link:not(:hover) {
@@ -195,7 +191,7 @@ code {
   padding: 0;
   list-style: none;
   float: left;
-  margin-left: 1em;
+  margin-left: 0;
 }
 .nav-item {
   display: inline-block;
@@ -393,19 +389,56 @@ a[href].direct-link:focus:visited,
 
 /** Rules for big screens **/
 @media only screen and (min-width: 960px) {
-  main {
-    margin-left: 9.45rem;
-    max-width: var(--reading-text-width);
-  }
+}
 
-  .site-logo {
-    margin: 1em 2.5em;
-  }
+body {
+  display: grid;
+  grid-template-columns: 1.5em 1fr 1.5em;
+  grid-template-areas: 
+    ". header ."
+    ". main ."
+    ". sidebar ."
+    ". footer .";
+}
 
+header { 
+  display: grid;
+  grid-column: header;
+  grid-template-columns: 8.5em minmax(600, 850px);
+  grid-template-areas: "header1 header2";
+}
+main { grid-area: main; }
+.sidebar { grid-area: sidebar; }
+footer { 
+  grid-area: footer;
+  padding-top: 2em;
+  padding-bottom: 1em;
 }
 
 /** Rules for big screens **/
 @media only screen and (min-width: 768px) {
+  body {
+    display: grid;
+    grid-template-columns: 1.5em var(--sidebar-width) minmax(600px, 850px) 1.5em;
+    grid-template-areas: 
+      ". header header . "
+      ". sidebar main ."
+      ". . footer .";
+  }
+
+  header { 
+    display: grid;
+    grid-template-columns: var(--sidebar-width) auto;
+    grid-template-areas: "header1 header2";
+  }
+
+  header .header-logo { 
+    grid-area: header1;
+  }
+  header .nav {
+    grid-area: header2;
+  }
+
   .side-panel-image {
     position: fixed;
     top: 0;

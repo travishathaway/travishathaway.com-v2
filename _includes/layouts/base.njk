@@ -19,7 +19,7 @@
   </head>
   <body>
     <header>
-      <a href="{{ '/' | url }}" alt="main site">
+      <a href="{{ '/' | url }}" alt="main site" class="header-logo">
         <div class="site-logo">
         </div>
       </a>
@@ -32,13 +32,17 @@
       </ul>
     </header>
 
+    <div class="sidebar">
+      <h3>{{title or metadata.title}}</h3>
+    </div>
+
     <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
       {{ content | safe }}
     </main>
 
     <div class="side-panel-image"></div>
 
-    <footer></footer>
+    <footer>© 2021 Travis Hathaway</footer>
 
     <!-- Current page: {{ page.url | url }} -->
   </body>
