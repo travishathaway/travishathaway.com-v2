@@ -25,11 +25,9 @@ layout: layouts/post.njk
 <h2 id="mechanical-worldview-of-environmental-economics">Mechanical worldview of environmental economics</h2>
 <p>How this mechanization is applied to our modern view of nature can be seen through the lens of environmental economics in our modern age. Shown in figure one is a diagram of resource flows through an economy <span class="citation" data-cites="noauthor_ecological_2020">(“Ecological Economics” <a href="#ref-noauthor_ecological_2020" role="doc-biblioref">2020</a>)</span>. In this sub-discipline of economics, the Earth is viewed as a closed system only obtaining energy from the Sun which is then transformed into natural resources for use within the global economy. One of the goals of environmental economics is solving the “sustainability problem” or figuring out how we can support all the humans inhabiting the earth today contained within the Earth’s biosphere <span class="citation" data-cites="perman_natural_2003">(Perman et al. <a href="#ref-perman_natural_2003" role="doc-biblioref">2003</a>, 16)</span>.</p>
 
-<div style="text-align: center; margin-bottom: 10px;">
-  <img src="./Diagram_of_natural_resource_flows.jpg" width="450" alt="" />
-  <div>
-    <span style="font-size: 0.8em;"><b>Figure 1</b> <i>Diagram describing resource flow through the economy</i> <span class="citation" data-cites="noauthor_ecological_2020">(“Ecological Economics” <a href="#ref-noauthor_ecological_2020" role="doc-biblioref">2020</a>)</span></span>
-  </div>
+<img src="./Diagram_of_natural_resource_flows.jpg" width="100%" alt="" />
+<div>
+  <span style="font-size: 0.8em;"><b>Figure 1</b> <i>Diagram describing resource flow through the economy</i> <span class="citation" data-cites="noauthor_ecological_2020">(“Ecological Economics” <a href="#ref-noauthor_ecological_2020" role="doc-biblioref">2020</a>)</span></span>
 </div>
 <p>The way of perceiving this process is a fundamentally mechanical one and even relies on the first and second laws of thermodynamics at its base <span class="citation" data-cites="perman_natural_2003">(Perman et al. <a href="#ref-perman_natural_2003" role="doc-biblioref">2003</a>, 49)</span>. Among other things, these laws are fundamental in understanding the operation of physical machines, but when we try to extend this same mindset to global environmental processes, differences in scale immediately arise and greatly reduce its accuracy. Instead, what we are left with are methods that must make simplifications in understanding incredibly complex systems.</p>
 <p>While operating under these simplifications we believe that nature is purely a machine that can be infinitely tweaked to our needs as a species. An example of this is this tweaking and manipulation of so called “carbon offsets”, which promise to fully compensate the loss of carbon dioxide capture in one area with the increase of carbon capturing ability in another. Therefore, the removal a forest in one area could be justified for the planting of trees in another. This type of mindset which lends itself to thinking of nature as swappable components of a machine, providing some sort of service beneficial to humanity, robs nature of all the other values it has. This is so because we deny all other aspects of a forest (biodiversity, cultural heritage, etc.) and choose to solely focus on the utilitarian aspects (carbon capture).</p>
@@ -55,46 +53,46 @@ layout: layouts/post.njk
 <p>In writing this paper, I hoped to show the ways in which modern societies are still very much prone to technological hubris and using technology to give us a false sense of security about our role and abilities as a species. To correct these errors, it is not my wish to adopt the ways of a Luddite, but rather to foster a sense of healthy skepticism towards technology, especially with how it influences our perception of and place in the natural world around us. Our technical abilities have now reached the point where humanity has extraordinary powers of creation and destruction. It is therefore of utmost importance that we use these powers responsibly and take an overly cautious position when developing new technologies. In doing so, we can hopefully slow down the appropriation process and hopefully stem the flood of unintended negative consequences coming from these technologies.</p>
 <h2 class="unnumbered" id="references">References</h2>
 <div id="refs" class="references hanging-indent" role="doc-bibliography">
-<div id="ref-billington_westward_1949">
-<p>Billington, Ray Allen, and James Blaine Hedges. 1949. <em>Westward Expansion: A History of the American Frontier</em>. Macmillan Company.</p>
+  <div id="ref-billington_westward_1949">
+  <p>Billington, Ray Allen, and James Blaine Hedges. 1949. <em>Westward Expansion: A History of the American Frontier</em>. Macmillan Company.</p>
+  </div>
+  <div id="ref-buck_atomic_1983">
+  <p>Buck, Alice. 1983. “The Atomic Energy Commission.” <em>U.S. Department of Energy</em>, July, 42. <a href="https://www.energy.gov/sites/prod/files/AEC%20History.pdf">https://www.energy.gov/sites/prod/files/AEC%20History.pdf</a>.</p>
+  </div>
+  <div id="ref-crist_affliction_2017">
+  <p>Crist, Eileen. 2017. “The Affliction of Human Supremacy.” <em>The Ecological Citizen</em> 1 (1): 61–64.</p>
+  </div>
+  <div id="ref-du_mechanics_2012">
+  <p>Du, Ruxu, and Longhan Xie. 2012. <em>The Mechanics of Mechanical Watches and Clocks</em>. Springer Science &amp; Business Media.</p>
+  </div>
+  <div id="ref-noauthor_ecological_2020">
+  <p>“Ecological Economics.” 2020. <em>Wikipedia</em>. <a href="https://en.wikipedia.org/w/index.php?title=Ecological_economics&amp;oldid=943897367">https://en.wikipedia.org/w/index.php?title=Ecological_economics&amp;oldid=943897367</a>.</p>
+  </div>
+  <div id="ref-ellsworth_injection_induced_2013">
+  <p>Ellsworth, William L. 2013. “Injection-Induced Earthquakes.” <em>Science</em> 341 (6142). <a href="https://doi.org/10.1126/science.1225942">https://doi.org/10.1126/science.1225942</a>.</p>
+  </div>
+  <div id="ref-fritz_japan_2020">
+  <p>Fritz, Martin. 2020. “Japan - 300.000 Tonnen C02 Unter Dem Meeresboden.” News. <em>Deutschlandfunk</em>. <a href="https://www.deutschlandfunk.de/japan-300-000-tonnen-c02-unter-dem-meeresboden.676.de.html?dram:article_id=468706">https://www.deutschlandfunk.de/japan-300-000-tonnen-c02-unter-dem-meeresboden.676.de.html?dram:article_id=468706</a>.</p>
+  </div>
+  <div id="ref-hard_hubris_2013">
+  <p>Hård, Mikael, and Andrew Jamison. 2013. <em>Hubris and Hybrids : A Cultural History of Technology and Science</em>. Routledge. <a href="https://doi.org/10.4324/9781315024400">https://doi.org/10.4324/9781315024400</a>.</p>
+  </div>
+  <div id="ref-herzog_peer_2001">
+  <p>Herzog, Howard J. 2001. <em>Peer Reviewed: What Future for Carbon Capture and Sequestration?</em> ACS Publications.</p>
+  </div>
+  <div id="ref-japan_ccs_co_ltd_research_2018">
+  <p>Japan CCS Co., Ltd. 2018. “Research Report on Impacts of Hokkaido Eastern Iburi Earthquake on CO2 Reservoir.” Japan CCS Co., Ltd. <a href="https://www.japanccs.com/wp/wp-content/uploads/2019/09/Research-Report-on-Impacts-of-Hokkaido-Eastern-Iburi-Earthquake-on-CO2-Reservoir_2nd-edition.pdf">https://www.japanccs.com/wp/wp-content/uploads/2019/09/Research-Report-on-Impacts-of-Hokkaido-Eastern-Iburi-Earthquake-on-CO2-Reservoir_2nd-edition.pdf</a>.</p>
+  </div>
+  <div id="ref-lester_environmental_1992">
+  <p>Lester, James P. 1992. <em>Environmental Politics and Policy: Theories and Evidence</em>. Macmillan International Higher Education.</p>
+  </div>
+  <div id="ref-mumford_technics_2010">
+  <p>Mumford, Lewis. 2010. <em>Technics and Civilization</em>. University of Chicago Press.</p>
+  </div>
+  <div id="ref-perman_natural_2003">
+  <p>Perman, Roger, Yue Ma, James McGlvray, and Michael Common. 2003. <em>Natural Resorce and Environmental Economics</em>. Pearson Education.</p>
+  </div>
+  <div id="ref-noauthor_paris_nodate">
+  <p>“The Paris Agreement UNFCCC.” n.d. Accessed March 18, 2020. <a href="https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement">https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement</a>.</p>
+  </div>
 </div>
-<div id="ref-buck_atomic_1983">
-<p>Buck, Alice. 1983. “The Atomic Energy Commission.” <em>U.S. Department of Energy</em>, July, 42. <a href="https://www.energy.gov/sites/prod/files/AEC%20History.pdf">https://www.energy.gov/sites/prod/files/AEC%20History.pdf</a>.</p>
-</div>
-<div id="ref-crist_affliction_2017">
-<p>Crist, Eileen. 2017. “The Affliction of Human Supremacy.” <em>The Ecological Citizen</em> 1 (1): 61–64.</p>
-</div>
-<div id="ref-du_mechanics_2012">
-<p>Du, Ruxu, and Longhan Xie. 2012. <em>The Mechanics of Mechanical Watches and Clocks</em>. Springer Science &amp; Business Media.</p>
-</div>
-<div id="ref-noauthor_ecological_2020">
-<p>“Ecological Economics.” 2020. <em>Wikipedia</em>. <a href="https://en.wikipedia.org/w/index.php?title=Ecological_economics&amp;oldid=943897367">https://en.wikipedia.org/w/index.php?title=Ecological_economics&amp;oldid=943897367</a>.</p>
-</div>
-<div id="ref-ellsworth_injection_induced_2013">
-<p>Ellsworth, William L. 2013. “Injection-Induced Earthquakes.” <em>Science</em> 341 (6142). <a href="https://doi.org/10.1126/science.1225942">https://doi.org/10.1126/science.1225942</a>.</p>
-</div>
-<div id="ref-fritz_japan_2020">
-<p>Fritz, Martin. 2020. “Japan - 300.000 Tonnen C02 Unter Dem Meeresboden.” News. <em>Deutschlandfunk</em>. <a href="https://www.deutschlandfunk.de/japan-300-000-tonnen-c02-unter-dem-meeresboden.676.de.html?dram:article_id=468706">https://www.deutschlandfunk.de/japan-300-000-tonnen-c02-unter-dem-meeresboden.676.de.html?dram:article_id=468706</a>.</p>
-</div>
-<div id="ref-hard_hubris_2013">
-<p>Hård, Mikael, and Andrew Jamison. 2013. <em>Hubris and Hybrids : A Cultural History of Technology and Science</em>. Routledge. <a href="https://doi.org/10.4324/9781315024400">https://doi.org/10.4324/9781315024400</a>.</p>
-</div>
-<div id="ref-herzog_peer_2001">
-<p>Herzog, Howard J. 2001. <em>Peer Reviewed: What Future for Carbon Capture and Sequestration?</em> ACS Publications.</p>
-</div>
-<div id="ref-japan_ccs_co_ltd_research_2018">
-<p>Japan CCS Co., Ltd. 2018. “Research Report on Impacts of Hokkaido Eastern Iburi Earthquake on CO2 Reservoir.” Japan CCS Co., Ltd. <a href="https://www.japanccs.com/wp/wp-content/uploads/2019/09/Research-Report-on-Impacts-of-Hokkaido-Eastern-Iburi-Earthquake-on-CO2-Reservoir_2nd-edition.pdf">https://www.japanccs.com/wp/wp-content/uploads/2019/09/Research-Report-on-Impacts-of-Hokkaido-Eastern-Iburi-Earthquake-on-CO2-Reservoir_2nd-edition.pdf</a>.</p>
-</div>
-<div id="ref-lester_environmental_1992">
-<p>Lester, James P. 1992. <em>Environmental Politics and Policy: Theories and Evidence</em>. Macmillan International Higher Education.</p>
-</div>
-<div id="ref-mumford_technics_2010">
-<p>Mumford, Lewis. 2010. <em>Technics and Civilization</em>. University of Chicago Press.</p>
-</div>
-<div id="ref-perman_natural_2003">
-<p>Perman, Roger, Yue Ma, James McGlvray, and Michael Common. 2003. <em>Natural Resorce and Environmental Economics</em>. Pearson Education.</p>
-</div>
-<div id="ref-noauthor_paris_nodate">
-<p>“The Paris Agreement UNFCCC.” n.d. Accessed March 18, 2020. <a href="https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement">https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement</a>.</p>
-</div>
-

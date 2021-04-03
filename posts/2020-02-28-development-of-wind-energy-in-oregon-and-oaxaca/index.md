@@ -26,23 +26,21 @@ To take a look at potential controversies surrounding this energy source, I deci
 <p>Wind energy interest was spurred in the United States after the 1973 oil crisis, and afterwards, a new era of development began that saw the construction of many wind farms in California <span class="citation" data-cites="kaldellis_wind_2011">(Kaldellis and Zafirakis <a href="#ref-kaldellis_wind_2011" role="doc-biblioref">2011</a>)</span>. This early development of wind energy even included a small scale 1.25 MW in Oregon on its southern coast <span class="citation" data-cites="noauthor_oregon_nodate">(“Oregon Office of Energy - Wind Information” <a href="#ref-noauthor_oregon_nodate" role="doc-biblioref">n.d.</a>)</span>. Because of continued consumer demand for green energy, tax incentives for wind energy production and certain states pursuing a more aggressive transition to renewable energy sources, wind energy has continued to steadily grow across the United states <span class="citation" data-cites="bird_policies_2005">(Bird et al. <a href="#ref-bird_policies_2005" role="doc-biblioref">2005</a>)</span>. The growth of wind energy in total Megawatt capacity is illustrated below.</p>
 
 
-<div class="row">
-  <div class="col-md-6" style="text-align: center">
+  <div class="" style="text-align: center">
     <div>USA wind energy capacity (MW)</div>
-    <img src="usa_wind_energy_capacity.png" alt="USA Wind Energy Capacity" />
+    <img src="usa_wind_energy_capacity.png" style="max-width: 80vw" alt="USA Wind Energy Capacity" />
   </div>
-  <div class="col-md-6" style="text-align: center">
+  <div class="" style="text-align: center">
     <div>Mexico wind energy capacity (MW)</div>
-    <img src="mexico_wind_energy_capacity.png" alt="Mexico Wind Energy Capacity" />
+    <img src="mexico_wind_energy_capacity.png" style="max-width: 80vw" alt="Mexico Wind Energy Capacity" />
   </div>
-</div>
 <hr />
 <div class="row">
-  <div class="col-md-6" style="text-align: center">
+  <div class="col-left" style="text-align: center">
     <div>USA 2019 total capacity</div>
     <div style="font-size: 2.5em">96.7 GW</div>
   </div>
-  <div class="col-md-6" style="text-align: center">
+  <div class="col-right" style="text-align: center">
     <div>Mexico 2019 total capacity</div>
     <div style="font-size: 2.5em">4.9 GW</div>
   </div>
@@ -75,7 +73,7 @@ To take a look at potential controversies surrounding this energy source, I deci
 <div class="blog-image-right">
   <h4 style="text-align: center">Oregon</h4>
   <a href="columbia_basin_map.png" title="Columbia Basin in Oregon">
-    <img src="columbia_basin_map.png" alt="Columbia Basin in Oregon"/>
+    <img src="columbia_basin_map.png" width="100%" alt="Columbia Basin in Oregon"/>
   </a>
   <span style="font-size: 0.8em;">
     <b>Map 1</b> <i>Columbia Basin Eastern Oregon</i>
@@ -87,7 +85,7 @@ To take a look at potential controversies surrounding this energy source, I deci
 <div class="blog-image-left">
   <h4 style="text-align: center">Oaxaca</h4>
   <a href="oaxaca_map.png" title="State of Oaxaca in Mexico">
-    <img src="oaxaca_map.png" alt="State of Oaxaca in Mexico"/>
+    <img src="oaxaca_map.png" width="100%" alt="State of Oaxaca in Mexico"/>
   </a>
   <span style="font-size: 0.8em">
     <b>Map 2</b> <i>State of Oaxaca in Southern Mexico</i>
@@ -103,7 +101,7 @@ To take a look at potential controversies surrounding this energy source, I deci
 
 <div class="blog-image-right">
   <a href="hood_river_county.png" title="Hood River County">
-    <img src="hood_river_county.png" alt="Hood River County"/>
+    <img src="hood_river_county.png" width="100%" alt="Hood River County"/>
   </a>
   <span style="font-size: 0.8em">
     <div>
@@ -121,7 +119,7 @@ To take a look at potential controversies surrounding this energy source, I deci
 
 <div class="blog-image-left">
   <a href="oaxaca_wind_farm.png" title="Oaxaca Wind Farm">
-    <img src="oaxaca_wind_farm.png" alt="Oaxaca Wind Farm"/>
+    <img src="oaxaca_wind_farm.png" width="100%" alt="Oaxaca Wind Farm"/>
   </a>
   <span style="font-size: 0.8em">
     <div>

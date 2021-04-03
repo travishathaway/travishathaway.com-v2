@@ -1,0 +1,107 @@
+body {
+  display: grid;
+  grid-template-columns: 1em 1fr 1em;
+  grid-template-areas: 
+    ". header ."
+    ". main ."
+    ". sidebar ."
+    ". footer .";
+}
+
+header { 
+  display: grid;
+  grid-column: header;
+  grid-template-columns: 8.5em minmax(600, 850px);
+  grid-template-areas: "header1 header2";
+}
+main { grid-area: main; }
+aside { grid-area: sidebar; }
+footer { 
+  grid-area: footer;
+  padding-top: 2em;
+  padding-bottom: 1em;
+}
+
+pre {
+  max-width: calc(100vw - 3.5em);
+  overflow: auto;
+}
+
+.blog-image-right {
+  float: none;
+}
+
+
+/** Rules for big screens **/
+@media only screen and (min-width: 860px) {
+  body {
+    display: grid;
+    grid-template-columns: 1.5em var(--sidebar-width) minmax(600px, 850px) 1.5em;
+    grid-template-areas: 
+      ". header header . "
+      ". sidebar main ."
+      ". . footer .";
+  }
+
+  header { 
+    display: grid;
+    grid-template-columns: var(--sidebar-width) auto;
+    grid-template-areas: "header1 header2";
+  }
+
+  header .header-logo { 
+    grid-area: header1;
+  }
+  header .nav {
+    grid-area: header2;
+  }
+
+  .side-panel-image {
+      display: none;
+  }
+
+  .postlist-item-img {
+    float: right;
+    width: 200px;
+    height: 100px;
+    overflow: hidden;
+    margin-top: 1em;
+    margin-left: 1em;
+    border-radius: 5px;
+  }
+  .postlist-item-img img {
+    float: right;
+    width: 200px;
+    height: 100px;
+    overflow: hidden;
+  }
+
+  .blog-image-right {
+    width: 50%;
+    float: right;
+    margin-left: 2em;
+  }
+  .blog-image-left {
+    width: 50%;
+    float: left;
+    margin-right: 2em;
+  }
+
+  .blog-image-right img, .blog-image-left img {
+      width: 100%;
+  }
+}
+
+/** Rules for big screens **/
+@media only screen and (min-width: 1000px) {
+  .side-panel-image {
+    display: inherit;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 12.5%;
+    background-image: url({{'/img/art_niveau_vertical_v2.png' | url }});
+    background-repeat: no-repeat;
+  }
+}

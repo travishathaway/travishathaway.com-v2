@@ -7,13 +7,14 @@
     <meta name="description" content="{{ description or metadata.description }}">
 
     {% set css %}
-      {% include "index.css" %}
+      {% include "css/prism-base16-monokai.dark.css" %}
+      {% include "css/index.css" %}
+      {% include "css/post.css" %}
+      {% include "css/grid.css" %}
     {% endset %}
     <style>
       {{ css | cssmin | safe }}
     </style>
-    <!--link rel="stylesheet" href="{{ '/css/index.css' | url }}"-->
-    <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
   </head>
@@ -32,9 +33,9 @@
       </ul>
     </header>
 
-    <div class="sidebar">
+    <aside>
       <h3>{{title or metadata.title}}</h3>
-    </div>
+    </aside>
 
     <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
       {{ content | safe }}
