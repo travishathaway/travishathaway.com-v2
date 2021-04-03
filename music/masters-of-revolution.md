@@ -6,8 +6,8 @@ layout: layouts/base.njk
 # Masters of Revolution
 
 <div class="blog-image-right">
-  <a href="home_studio.png" title="Home Studio">
-    <img src="home_studio.png" alt="Home Studio"/>
+  <a href="home_studio.jpg" title="Home Studio">
+    <img src="home_studio.jpg" alt="Home Studio"/>
   </a>
   <span style="font-size: 0.8em; display: inherit">
     <i>Home studio I made in the corner of my uncle's living room in 2016</i>

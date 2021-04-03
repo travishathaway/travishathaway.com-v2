@@ -3,9 +3,13 @@
   <div class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
     <div class="postlist-item-img">
       <picture>
-        <source srcset="{{post.data.featured_image_thumbnail}}.webp" type="image/webp" />
-        <source srcset="{{post.data.featured_image_thumbnail}}.jpg" type="image/jpeg" />
-        <img src="{{post.data.featured_image_thumbnail}}.jpg" />
+        <source
+          srcset="{{post.data.featured_image}}_800.webp"
+          type="image/webp" />
+        <source
+          srcset="{{post.data.featured_image}}_800.jpg"
+          type="image/jpeg" />
+        <img src="{{post.data.featured_image_thumbnail}}.jpg"  loading="lazy" />
       </picture>
     </div>
     <div class="postlist-item-title">

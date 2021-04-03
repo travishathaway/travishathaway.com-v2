@@ -6,8 +6,8 @@ layout: layouts/base.njk
 # Enkindled Bonds
 
 <div class="blog-image-right">
-  <a href="cover_art.png" title="Cover art">
-    <img src="cover_art.png" alt="Cover art"/>
+  <a href="cover_art.jpg" title="Cover art">
+    <img src="cover_art.jpg" alt="Cover art"/>
   </a>
   <span style="font-size: 0.8em; display: inherit">
     <i>Cover art made with MS Paint circa 2009</i>
