@@ -34,7 +34,15 @@
     </header>
 
     <aside>
-      <h3>{{title or metadata.title}}</h3>
+      <h3>Tags</h3>
+      <div class="tag-list">
+      {% for tag in collections.tagList | filterTagList %}
+        {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+        <div class="tag-list-item">
+          <a href="{{ tagUrl | url }}">{{ tag }}</a>
+        </div>
+      {% endfor %}
+      </div>
     </aside>
 
     <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
