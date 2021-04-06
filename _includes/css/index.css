@@ -59,7 +59,7 @@ body {
   background-color: var(--white);
 }
 p, li {
-  font-size: 1.1em;
+  font-size: 1.125em;
   font-family: 'PT Serif', serif;
 }
 
@@ -82,6 +82,11 @@ a[href] {
 }
 a[href]:visited {
   color: var(--dark-red);
+}
+
+.tag-count {
+  font-size: 0.9em;
+  color: var(--darkgray);
 }
 
 .site-logo {

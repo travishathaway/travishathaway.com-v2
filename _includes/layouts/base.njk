@@ -39,7 +39,7 @@
       {% for tag in collections.tagList | filterTagList %}
         {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
         <div class="tag-list-item">
-          <a href="{{ tagUrl | url }}">{{ tag }}</a>
+          <a href="{{ tagUrl | url }}">{{ tag }}</a> <span class="tag-count">({{collections[tag].length}})</span>
         </div>
       {% endfor %}
       </div>

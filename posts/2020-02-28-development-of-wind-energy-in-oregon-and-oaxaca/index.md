@@ -6,7 +6,7 @@ description: "In this longer, essay style post, I compare wind energy developmen
 featured_image: "/img/post_images/OR_Wind_Turbines"
 featured_image_thumbnail: "/img/post_images/OR_Wind_Turbines_small"
 show_featured_image: true
-tags: [wind energy, sustainability, academic]
+tags: [wind energy, sustainability]
 layout: layouts/post.njk
 ---
 
