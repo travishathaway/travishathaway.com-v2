@@ -31,7 +31,6 @@ pre {
   float: none;
 }
 
-
 .postlist-item-img {
   width: 100%;
   height: 200px;
@@ -43,6 +42,10 @@ pre {
   height: auto;
   overflow: hidden;
   border-radius: 5px;
+}
+
+.site-logo-text {
+  display: none;
 }
 
 /** Rules for big screens **/
@@ -67,6 +70,26 @@ pre {
   }
   header .nav {
     grid-area: header2;
+  }
+
+  header .header-logo-container {
+    display: grid;
+    grid-template-columns: 70px auto;
+    grid-template-areas: "logo text";
+  }
+
+  header .site-logo-text {
+    display: block;
+    font-size: 1em;
+    align-self: center;
+    grid-area: text;
+    padding: 0 1em;
+    color: var(--darkgray);
+    font-weight: bold;
+  }
+
+  header .site-logo {
+    grid-area: logo;
   }
 
   .side-panel-image {
@@ -114,7 +137,7 @@ pre {
     right: 0;
     height: 100%;
     width: 12.5%;
-    background-image: url({{'/img/art_niveau_vertical_v2.png' | url }});
+    background-image: url({{'/img/art_niveau_vertical_v3.webp' | url }});
     background-repeat: no-repeat;
   }
 }

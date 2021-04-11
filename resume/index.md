@@ -130,7 +130,9 @@ eleventyNavigation:
 **Minor:** Economics
 
 <br />
+
 ## Research Projects
+
 <hr />
 
 ### University Green Space
