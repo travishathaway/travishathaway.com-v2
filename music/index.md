@@ -1,12 +1,10 @@
 ---
 title: "Music"
-layout: layouts/base.njk
+layout: layouts/post.njk
 eleventyNavigation:
   key: Music
   order: 2
 ---
-
-# Music
 
 This is a semi-organized splattering of the music I have created over the years. I have attempted to organize the songs by project name (when there is one) as well as give a brief overview of when I wrote it and whatever other details I wish to indulge in. You can find a lot of this stuff over on my [Sound Cloud](https://soundcloud.com/travis-hathaway) account too, but there are some things here which are not available there.
 
