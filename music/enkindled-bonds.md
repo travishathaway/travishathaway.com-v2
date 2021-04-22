@@ -1,9 +1,7 @@
 ---
-title: "Masters of Revolution"
-layout: layouts/base.njk
+title: "Enkindled Bonds"
+layout: layouts/post.njk
 ---
-
-# Enkindled Bonds
 
 <div class="blog-image-right">
   <a href="cover_art.jpg" title="Cover art">

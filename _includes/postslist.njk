@@ -3,6 +3,7 @@
   <div class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
       <a href="{{ post.url | url }}" class="postlist-link">
     <div class="postlist-item-img">
+      <a href="{{ post.url | url }}" class="postlist-link">
       <picture>
         <source
           srcset="{{post.data.featured_image}}_800.webp"
@@ -12,6 +13,7 @@
           type="image/jpeg" />
         <img src="{{post.data.featured_image_thumbnail}}.jpg"  loading="lazy" />
       </picture>
+      </a>
     </div>
     <div class="postlist-item-title">
           {% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}

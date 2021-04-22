@@ -1,9 +1,7 @@
 ---
 title: "Masters of Revolution"
-layout: layouts/base.njk
+layout: layouts/post.njk
 ---
-
-# Masters of Revolution
 
 <div class="blog-image-right">
   <a href="home_studio.jpg" title="Home Studio">

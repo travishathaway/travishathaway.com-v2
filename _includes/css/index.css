@@ -1,15 +1,17 @@
 /* Colors */
 :root {
-  --lightgray: #e0e0e0;
+  --lightgray: #f7f7f7;
   --gray: #C0C0C0;
   --darkgray: #333;
   --navy: #17050F;
   --blue: #082840;
   --white: #fff;
-  --reading-text-width: 70ch; /* 600px /16 */
+  --reading-text-width: 75ch;
   --reading-text-width-small: 30em;
-  --dark-red: #993c3c;
   --sidebar-width: 13em;
+  --dark-red-700: hsl(0, 44%, 22%); 
+  --dark-red: hsl(0, 44%, 42%);
+  --dark-red-300: hsl(0, 44%, 96%);
 }
 
 /** Fonts **/
@@ -61,6 +63,7 @@ body {
 p, li {
   font-size: 1.125em;
   font-family: 'PT Serif', serif;
+  line-height: 1.6;
 }
 
 p:last-child {
@@ -223,8 +226,19 @@ code {
   line-height: 1.8;
   margin-top: 2em;
   border-bottom: solid 1px #CCC;
-  padding-bottom: 2em;
+  margin-bottom: 2em;
+  padding: 1em;
+  transition: ease-in-out 250ms;
+  border-radius: 5px;
+  min-height: 150px;
 }
+
+.postlist-item:hover {
+  background-color: var(--lightgray);
+}
+
+.postlist-item:
+
 .postlist-item:first {
   margin-top: 0px;
 }
