@@ -110,7 +110,8 @@ module.exports = function(eleventyConfig) {
       "js",
       "css",
       "woff",
-      "json"
+      "json",
+      "mp3"
     ],
 
     // -----------------------------------------------------------------
