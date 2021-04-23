@@ -1,6 +1,7 @@
 /* Colors */
 :root {
   --lightgray: #f7f7f7;
+  --lightgray-500: #dcdcdc;
   --gray: #C0C0C0;
   --darkgray: #333;
   --navy: #17050F;
@@ -203,7 +204,16 @@ code {
 }
 .nav-item {
   display: inline-block;
-  margin-right: 1em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  border-right: solid 3px var(--lightgray-500);
+  line-height: 1;
+}
+.nav-item:last-child {
+  border-right: none;
+}
+.nav-item:first-child {
+  padding-left: 0;
 }
 .nav-item a {
   font-weight: bold;
@@ -211,9 +221,9 @@ code {
 .nav-item a[href]:not(:hover) {
   text-decoration: none;
 }
-.nav-item-active {
+.nav-item-active > a {
   font-weight: 700;
-  text-decoration: underline;
+  border-bottom: dashed 2px var(--lightgray-500);
 }
 
 /* Posts list */
