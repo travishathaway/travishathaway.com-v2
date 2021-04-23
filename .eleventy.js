@@ -107,6 +107,10 @@ module.exports = function(eleventyConfig) {
       "png",
       "svg",
       "webp",
+      "js",
+      "css",
+      "woff",
+      "json"
     ],
 
     // -----------------------------------------------------------------

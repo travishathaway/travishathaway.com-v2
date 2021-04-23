@@ -237,8 +237,6 @@ code {
   background-color: var(--lightgray);
 }
 
-.postlist-item:
-
 .postlist-item:first {
   margin-top: 0px;
 }
