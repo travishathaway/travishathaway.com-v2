@@ -17,7 +17,7 @@ feature_image_credits: '
 ---
 
 
-When I started my masters program last year, one thing I new for certain I would have to do were writing assignments. These included things like seminar papers, reports and the biggest of all, my masters thesis. Coming straight out of the world of software engineering, I had become very acquainted with text editors and revision control, and I intended to use these tools for my writing as well. There was no going back to software like Microsoft Word or Libre Office…
+When I started my masters program last year, I knew I was going to begin writing a lot more. This writing would include things like seminar papers, reports and the biggest of all, my masters thesis. Coming straight out of the world of software engineering, I had become very acquainted with text editors and revision control, and I intended to use these tools for my writing as well. There was no going back to software like Microsoft Word or Libre Office…
 
 I began searching for some solutions and initially knew that the text formatting language LaTeX was an option. During my undergraduate program, I had seen some pretty impressive examples from students I knew from the computer science program. But unfortunately, I never found the time to learn LaTeX and wasn’t really prepared to devote the amount of time necessary to learn how to use it well.
 
