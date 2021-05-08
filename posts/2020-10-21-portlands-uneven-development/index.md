@@ -6,7 +6,7 @@ description: This essay explores Portland's vegetation cover and how it reveals 
 featured_image: "/img/post_images/NDVI_cropped"
 featured_image_thumbnail: "/img/post_images/NDVI_cropped_small"
 show_featured_image: true
-tags: [political ecology, gis]
+tags: [political ecology, essays]
 layout: layouts/post.njk
 ---
 

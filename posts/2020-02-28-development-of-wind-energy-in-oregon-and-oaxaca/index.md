@@ -6,7 +6,7 @@ description: "In this longer, essay style post, I compare wind energy developmen
 featured_image: "/img/post_images/OR_Wind_Turbines"
 featured_image_thumbnail: "/img/post_images/OR_Wind_Turbines_small"
 show_featured_image: true
-tags: [wind energy, sustainability]
+tags: [economic geography, essays]
 layout: layouts/post.njk
 ---
 
@@ -35,23 +35,25 @@ To take a look at potential controversies surrounding this energy source, I deci
     <img src="mexico_wind_energy_capacity.png" style="max-width: 80vw" alt="Mexico Wind Energy Capacity" />
   </div>
 <hr />
-<div class="row">
-  <div class="col-left" style="text-align: center">
-    <div>USA 2019 total capacity</div>
+<div style="display: grid; grid-template-columns: 50% 50% ">
+  <div style="text-align: center">
+    <div><strong>USA</strong> 🇺🇸 </div>
+    <div>2019 total capacity</div>
     <div style="font-size: 2.5em">96.7 GW</div>
   </div>
-  <div class="col-right" style="text-align: center">
-    <div>Mexico 2019 total capacity</div>
+  <div style="text-align: center">
+    <div><strong>Mexico</strong> 🇲🇽  </div>
+    <div>2019 total capacity</div>
     <div style="font-size: 2.5em">4.9 GW</div>
   </div>
 </div>
 <hr />
-<div class="row">
-  <div class="col-md-6" style="text-align: center">
+<div style="display: grid; grid-template-columns: 50% 50% ">
+  <div style="text-align: center">
     <div>Percent of total capacity</div>
     <div style="font-size: 2.5em">6.3%</div>
   </div>
-  <div class="col-md-6" style="text-align: center">
+  <div style="text-align: center">
     <div>Percent of total capacity</div>
     <div style="font-size: 2.5em">5.32%</div>
   </div>

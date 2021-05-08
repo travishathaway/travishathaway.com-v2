@@ -9,6 +9,7 @@ include_vega: false
 description: "In this longer essay formatted article, I explore the roots of our mechanical worldview and the effects it has on the hubris of humanity with an example taken from carbon capture and sequestration."
 tags: 
   - philosophy
+  - essays
 layout: layouts/post.njk
 ---
 <h2 id="introduction">Introduction</h2>
