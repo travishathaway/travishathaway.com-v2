@@ -36,7 +36,7 @@ eleventyNavigation:
 **Part Time Software Engineer** - Portland, OR, USA (Remote) - *2019-Present*
 
 - Developed frontend web applications providing customers with an interactive experience for exploring study results.
-- Researched and developed web applications for managing science projects which increased productivity and allowed new business possibilities.
+- Researched and developed web applications for managing science projects to increase productivity and allow new business possibilities.
 
 <br />
 
@@ -97,7 +97,9 @@ eleventyNavigation:
 - Created a series of flexible, tested, and well documented Python libraries for easily accessing reporting data.
 
 <br />
+
 ## Education
+
 <hr />
 
 <div style="float: right">
