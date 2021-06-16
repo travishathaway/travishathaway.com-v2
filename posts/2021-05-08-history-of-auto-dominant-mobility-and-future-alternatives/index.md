@@ -2,7 +2,7 @@
 author: Travis Hathaway
 title: "A History of Auto Dominant Mobility and Future Alternatives"
 date: 2021-05-08
-description: "This essay covers the history the automobile and the underlying societal forces leading to its success. Also included is a discussion of how alternatives are being proposed and implemented."
+description: "This essay covers the history of the automobile and the underlying societal forces leading to its success. Also included is a discussion of how alternatives are being proposed and implemented."
 featured_image: "/img/post_images/auto_history"
 featured_image_thumbnail: "/img/post_images/auto_history_small"
 show_featured_image: true
