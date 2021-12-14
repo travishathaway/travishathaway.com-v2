@@ -12,20 +12,18 @@ layout: layouts/post.njk
 
 ## Introduction
 
-In this article, I'll be presenting a plan to use a combination of data sources and web APIs to answer several questions about transportation modes in the city Kiel. For this study, I will be focusing on bicycling, driving and mass transit (bus), and these are the questions I would like to answer:
+In this article, I'll be presenting a plan to use a combination of data sources and web APIs to answer several questions about transportation modes in the of city Kiel, Germany. For this study, I will be focusing on bicycling, driving and public transit (mostly buses in Kiel), and these are the questions I would like to answer:
 
 - What is the average **duration** of travel for each transportation mode?
 - What is the average **distance** traveled for each transportation mode?
-
-These are just the first two questions that will help me orient the way I intend to set up this study, and as I progress, there will be more opportunities to ask different kinds of questions (i.e. taking spatial aspects in to account, such as where you are with in the city or even the time of day).
 
 ### What is a trip?
 
 A trip is quite easy to define in geographical terms: moving from one point the other (point A to point B). But most people don't usually decide to travel unless there's a specific reason (let's just pretend joy rides and walk-abouts don't exist for the time being). This means that we typically have goals and points of interest (POI) we want to visit, and when we do we pick a mode of transportation, this choice correlates to our preferences and abilities (both economic and physical).
 
-For this study, I want to focus on two different types of trips: trips to universities and to work. All the of these trips to and from universities and work will be hypothetical and not involve real people. Instead they will be the result of random selecting geographically distributed points from across the city. By doing this, I will be able generate thousands of possible scenarios and then aggregate the results to look for statistical trends and differences.
+For this study, I want to focus on two different types of trips: trips to universities and to work. All the of these trips to and from universities and work will be hypothetical and not involve real people. Instead they will be the result of random selecting geographically distributed points from across the city. By doing this, I will be able generate thousands of possible scenarios and then aggregating the results to look for statistical trends and differences.
 
-In order to do this, I will rely on the usage of web APIs (Google Maps, Bing Maps, etc.) to provide the routes themselves as well as information about the duration and the distance. These services are usually pretty accurate and even take traffic patterns in to account for certain modes, so I think this should provide a pretty accurate portrayal real travel times.
+In order to do this, I will rely on the usage of web APIs (Google Maps, Bing Maps, etc.) to provide the routes themselves as well as information about the duration and the distance. These services are usually pretty accurate and even take traffic patterns in to account for certain modes, so I think this should provide a pretty accurate portrayal of real travel times.
 
 ### Modes of Transport
 
@@ -33,26 +31,22 @@ Although there exist many different forms of transportation, the ones I will be 
 
 - Bicycle
 - Automobile
-- Transit (bus)
+- Public Transit
 
-I decided to pick these forms of transport because for short trips within a city they seem to be fair competitors, and most importantly, the length of travel times and distances can easily be calculated with available web APIs.
+I decided to pick these forms of transport because they are three most dominant forms (aside from walking). Most importantly, the length of travel times and distances can easily be calculated with available web APIs.
 
-Ultimately, I hope that the first phase of the study could then lead to a deeper dive in examining of each the aforementioned transportation modes. This could include an analysis of accessibility and equity issues among others.
+Ultimately, I hope that the first phase of the study could then lead to a deeper dive in examining each of the aforementioned transportation modes. This could include an analysis of accessibility and equity issues among others.
 
 ## Methods
 
 In the next section, I want to discuss some more concrete aspects of the study and outline exactly how I plan to carry it out. I'll be discussing the following:
 
-- How do I define my residential study areas?
+- How do I collect residential addresses?
 - What will my points of interest be?
 - How will I determine my routes?
 - What routing solutions are there? Which will I use?
 
 ### How do I define my residential study areas?
-
-One the most important things for this study will be having a firm definition of what is and is not a residential area. This is crucial to the random sampling of residences that I will use as starting points to the selected POIs during the study.
-
-The first way to do this is by manually going through a map and drawing polygons over areas that are known residential zones. This is actually what I started out doing intially, but it became too labor intensive and I realized that there was any easier way...
 
 Open Street Map (OSM) is the Wikipedia of geographical data, and this data is frequently updated and made available for download. Included in this geographical database are polygons with details such as "landuse". Included among the landuse types are "residential" areas which is precisely what I need for this study. *Figure 1* shows these residential areas:
 
@@ -77,7 +71,7 @@ Open Street Map (OSM) is the Wikipedia of geographical data, and this data is fr
 
 The POIs will basically be places where people regularly commute to (under normal, non-corona circumstances). For this study, I will be selecting universities and places where people typically work. The prior is really straightforward to define but the latter is little trickier.
 
-In order to solve this problem, I again turned to the OSM data to see if their classifications could offer any assitance. Also included under the "landuse" label is the category "industrial". This category includes plenty of places I personally know to be employment hubs such as "Wissenschaftspark" and "Gewerbegebeite Grasweg" both located directly near Kiel University. These areas are shown in *figure 2* below.
+In order to solve this problem, I have again turned to the OSM data to see if their classifications could offer any assitance. Also included under the "landuse" label is the category "industrial". This category includes plenty of places I personally know to be employment hubs such as "Wissenschaftspark" and "Gewerbegebeite Grasweg" both located directly near Kiel University. These areas are shown in *figure 2* below.
 
 <p style="text-align: center;">
   <a href="img/kiel_city_areas.jpg">
