@@ -33,7 +33,7 @@ eleventyNavigation:
 </div>
 
 ### CAPA Strategies
-**Part Time Software Engineer** - Portland, OR, USA (Remote) - *2019-Present*
+**Software Engineer** - Portland, OR, USA (Remote) - *2019-Present*
 
 - Developed frontend web applications providing customers with an interactive experience for exploring study results.
 - Researched and developed web applications for managing science projects to increase productivity and allow new business possibilities.
