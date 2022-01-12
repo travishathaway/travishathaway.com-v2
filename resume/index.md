@@ -18,10 +18,10 @@ eleventyNavigation:
 </div>
 
 ### Christian-Albrechts Universität zu Kiel
-**Part time Student Assistant** - Kiel, Germany - *2020-Present*
+**Part time Student Assistant** - Kiel, Germany - *April 2020 - October 2021*
 
 - Led technology training for our online learning platform, giving instructors greater flexibility and more abilities when organizing their courses.
-- Regularly updated department websites to keeping students informed and up-to-date.
+- Performed a data migration for building management which allowed them to see 10 years of utility usage for the entire university.
 - Proof read English writing for websites and scientific papers.
 
 <br />
@@ -33,7 +33,7 @@ eleventyNavigation:
 </div>
 
 ### CAPA Strategies
-**Software Engineer** - Portland, OR, USA (Remote) - *2019-Present*
+**Software Engineer** - Portland, OR, USA (Remote) - *January 2020- October 2021*
 
 - Developed frontend web applications providing customers with an interactive experience for exploring study results.
 - Researched and developed web applications for managing science projects to increase productivity and allow new business possibilities.
@@ -112,11 +112,10 @@ eleventyNavigation:
 
 **Chrisitian-Albrechts University** - Kiel, Germany - *2021*
 
-<div>
-<b>Concentrations:</b> mobility, urban development and planning
-</div>
-<div style="margin-bottom: 45px">
-  <b>Thesis:</b> <i>in progress</i>
+<p>
+  <b>Concentrations:</b> mobility, urban development and planning
+</p>
+<div style="margin-bottom: 5em">
 </div>
 
 <div style="float: right">
@@ -137,15 +136,15 @@ eleventyNavigation:
 
 <hr />
 
-### University Green Space
+### Master Thesis: "Mapping Alternative Mobility Accessibility in Kiel: The Argument for Auto-reduction Strategies"
 
-In this research project, which was carried out at Christian-Albrechts University, we set out to answer how best to redevelop an abandoned lot on university grounds. Our group worked closely with university administration to come up with a set of suggestions for the space.
+In this project, I developed a walkability of index and used it to plan various auto-reduction measures for the city of Kiel. GIS was used heavily in this project, and much of the code I wrote for it is now open source (available here: https://github.com/travishathaway/altmo). The project also has a companion website which presents the results of my findings.
 
-My primary role was developing a website for our project which allowed us to host surveys, publish information concerning the project and share additional blog style content. I also helped conduct interviews and helped co-host a workshop where we further distilled key recommendations for the space.
+**Website:** https://altmo.thath.net
 
-This project was also conducted throughout the Corona pandemic and required our group to quickly adapt our methodologies.
+<div style="margin-top: 2.5em; margin-bottom: 2.5em"></div>
 
-### Urban Heat Island
+### Urban Heat Island Research
 
 As a technical assistant, my primary role was helping develop remote sensing hardware for the collection temperature and GPS data. The early prototypes I developed eventually led to the development of production units. Additionally, I was in charge of developing a web application for the management of the data that we collected. Although this web application prototype never led to primary usage, lessons learned during its development informed future decisions regarding data management.
 

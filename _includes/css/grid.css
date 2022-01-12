@@ -137,7 +137,7 @@ pre {
     top: 0;
     right: 0;
     height: 100%;
-    width: 12.5%;
+    width: 10%;
     background-image: url({{'/img/art_niveau_vertical_v3.webp' | url }});
     background-repeat: no-repeat;
   }
