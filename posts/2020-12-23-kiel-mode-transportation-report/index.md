@@ -16,5 +16,5 @@ Welcome back to part two of my study of transportation modes in Kiel where I pre
 <hr />
 
 <div style="font-size: 1.4em; text-align: center; margin: 2em 0;">
-  <a href="../../reports/kiel-mode-speed/" title="Full Report">Go to full report</a>
+  <a href="http://travishathaway-com-reports.s3-website.eu-central-1.amazonaws.com/reports/kiel-mode-speed/index.html" title="Full Report">Go to full report</a>
 </div>
