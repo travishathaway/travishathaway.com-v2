@@ -62,7 +62,7 @@ body {
   background-color: var(--white);
 }
 p, li {
-  font-size: 1.125em;
+  font-size: 1.125rem;
   font-family: 'PT Serif', serif;
   line-height: 1.6;
 }
@@ -89,7 +89,7 @@ a[href]:visited {
 }
 
 .tag-count {
-  font-size: 0.9em;
+  font-size: 0.9rem;
   color: var(--darkgray);
 }
 
@@ -306,7 +306,7 @@ blockquote p {
 }
 
 .tmpl-home .postlist-link {
-  font-size: 1.1875em; /* 19px /16 */
+  font-size: 1.1875rem; /* 19px /16 */
   font-weight: 700;
 }
 
