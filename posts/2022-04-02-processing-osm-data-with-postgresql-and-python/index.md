@@ -11,21 +11,60 @@ layout: layouts/post.njk
 feature_image_credits: ''
 ---
 
-This is meant to be a compagnion post to the talk I gave at PyConDE 2022. With that being said, it is not important that you have already watched that talk to understand this post (although I would highly recommend checking it out first!)
+*This is meant to be a companion post to the talk I gave at PyConDE 2022. This post will still make sense even if you have not watched the talk, but I highly recommend checking it out.* 😉
+
+<div style="text-align: center">
+
+[Click here to watch the talk](https://travishathaway.com)
+
+</div>
 
 ## Background
 
-In 2021, I set off to write my master thesis with the city of Kiel in Northern Germany as my object of study. I wanted to find out how accessible the city was by foot and in turn use this data as a justification for car-reduction measures. To create this accessibility assessment, I was going to need data about where people lived and where all the common amenities in the city were.
+In 2021, I set off to write my master thesis with the city of Kiel in Northern Germany as my object of study. I wanted to find out how accessible the city was by foot and in turn use this data as a justification for car-reduction measures ([read more about this project here](https://altmo.thath.net/)). To create this accessibility assessment, I was going to need data about where people lived and where all the common amenities in the city were.
 
-OpenStreetMap (OSM) provides this data free of cost, and I found this especially useful for conducting studies in Germany. Unlike where I am from (U.S.A which has many high quality public data resources), open data for German cities can be hard find. With this data in hand, I was ready to begin my analysis.
+The OpenStreetMap project provided an answer to this question. This data set covers the entire planet and is constantly growing. Accuracy for this data set varies between countries, but for Germany, where I was going to base my study, the data quality is very high with plenty of detailed information available for German cities.
 
-On top of this, I had a good idea about how 
+In order to sift through this data and come up with a meaningful analysis, I was also going to need a way to organize this project. This is where PostgreSQL and Python came into play. From the outset, I decided that PostgreSQL with its PostGIS extension was going to be the "data warehouse" for the project. For organizing the running of queries and generating reports, I would use Python to glue everything together.
 
-In this post, I will be giving you everything I wish I had at the beginning of this analysis, including:
+I learned quite a bit from this process and now want to report everything I learned to hopefully benefit you the reader. Therefore, in this post, I will be giving you everything I wish I had at the beginning of this analysis, including:
 
-- Overview of OSM data types
-- How does this 
+- [OSM data overview (including data types of tags)](#osm-overview)
+- [OSM data in PostgreSQL/PostGIS](#postgis-overview)
+- [How do we import this data?](#osm-data-import)
+- [Other tools for processing OSM data](#osm-other-tools)
+- [Python example project](#python-example-project)
 
+All of the examples I reference here can be found at this:
+
+<div style="text-align: center">
+  <p>
+    <a href="https://github.com/travishathaway/talks/tree/main/processing_osm_data_with_postgres_and_python">
+      GitHub repository
+    </a>
+  </p>
+</div>
+
+
+## <a id="osm-overview"></a>OSM data overview
+
+Oh Hai!
+
+## <a id="postgis-overview"></a>OSM data in PostgreSQL/PostGIS
+
+Oh Hai!
+
+## <a id="osm-data-import"></a>How do we import this data?
+
+Oh Hai!
+
+## <a id="osm-other-tools"></a>Other tools for processing OSM data
+
+Oh Hai!
+
+## <a id="python-example-project"></a>Python example project
+
+Oh Hai!
 
 `TOC Should be here`
 
