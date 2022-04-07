@@ -13,8 +13,7 @@ tags: [gis, mobility]
 
 Welcome back to part two of my study of transportation modes in Kiel where I present the findings of my research. I wanted to experiment with a different format for displaying the results, so click the link below to visit the report:
 
-<hr />
-
-<div style="font-size: 1.4em; text-align: center; margin: 2em 0;">
-  <a href="http://travishathaway-com-reports.s3-website.eu-central-1.amazonaws.com/reports/kiel-mode-speed/index.html" title="Full Report">Go to full report</a>
-</div>
+<a href="http://travishathaway-com-reports.s3-website.eu-central-1.amazonaws.com/reports/kiel-mode-speed/index.html" title="Full Report"
+  class="external-service">
+  <span>Go to full report</span>
+</a>

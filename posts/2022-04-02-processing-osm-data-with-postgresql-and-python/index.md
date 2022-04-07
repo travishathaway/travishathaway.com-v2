@@ -15,7 +15,10 @@ feature_image_credits: ''
 
 <a href="https://travishathaway.com" class="external-service">
   <span>Click here to watch the talk</span>
+  <i class="fa-brands fa-youtube fa-xl" style="color: var(--darkgray)"></i>
 </a>
+
+<hr />
 
 ## Background
 
@@ -38,8 +41,10 @@ All of the examples I reference here can be found on GitHub:
 <a href="https://github.com/travishathaway/talks/tree/main/processing_osm_data_with_postgres_and_python"
   class="external-service">
   <span>Check out it on GitHub</span>
-  <i class="fa-brands fa-github-square fa-2x" style="color: #24292f"></i>
+  <i class="fa-brands fa-github-square fa-xl" style="color: #24292f"></i>
 </a>
+
+<hr />
 
 
 ## <a id="osm-overview"></a>OSM data overview
@@ -101,43 +106,30 @@ function osm2pgsql.process_node(object)
 end
 ```
 
-
-
 ## <a id="osm-other-tools"></a>Other tools for processing OSM data
 
-Oh Hai!
+Other than `osm2pgsql`, another great tool for work with OSM data is the `osmium`. This CLI tool can be thought of as the swiss army knife for OSM data as it can perform diffs, extracts and filters among other functions. Using this tool for extracts can be very useful when filtering large OSM datasets. The following example shows how we can use bounding boxes to extract a subset from a larger data file:
+
+```bash
+# Bounding box format: min_lon, min_lat, max_lon, max_lat
+
+osmium extract \
+  --bbox -123.3,45.1,-122.1,45.8 \
+  --output portland-metro-area.osm.pbf \
+  us-west-latest.osm.pbf
+```
+
+This will extract all the data for the Portland, Oregon metro area in the U.S. Using extracts this way can be especially practical when the area you want data for spans state boundaries. The Greater Portland metro area actually reaches into Washington, so an extract of Oregon or Washington alone would not suffice. It is instead easier to download a larger area first (i.e. `us-west-latest`) and then extract based on a bounding box.
+
+On top of extracting, `osmium` can also provide a way to quickly filter OSM datasets by tag. The following example retrieves everything in the data set where the amenity tag is not null:
+
+```bash
+osmium tags-filter \
+  --output portland-metro-amenities.osm.pbf \
+  portland-metro-area.osm.pbf \
+  amenity
+```
+
+For a full list of these commands, go check out the [osmium documentation](https://docs.osmcode.org/osmium/latest/).
 
 ## <a id="python-example-project"></a>Python example project
-
-Oh Hai!
-
-`TOC Should be here`
-
-- Intro
-  - Why am I writing this article?
-    - Explain how to structure Python/PostgreSQL projects when working with OSM data
-    - Provide all the information I wish I had when I was starting
-  - OSM Data
-     - what are the different data types?
-      - Nodes
-      - Ways (closed ways, open ways, polygons)
-      - Relations
-    - How are the categorized?
-      - Tags
-        - taginfo
-        - OSM Wiki for finding out more about tags
-  - PostgreSQL/PostGIS
-    - What is PostGIS
-      - Extension that can help you manage and query geographic information
-    - Types
-      - Points, MultiPoint
-      - LineString, MultiLineString
-      - Polygon, MultiPolygon
-  - Tools for importing this data into PostgreSQL
-    - osmium:
-      - Swiss army knife for OSM data
-    - osm2pgsql:
-      - importing tool that allows flexible imports with Lua scripts
-  - Projects with Python
-    - Initial structure
-    - Why command line interfaces are good

@@ -158,6 +158,10 @@ code {
   border: 1px var(--dark-red) dashed;
 }
 
+pre code {
+  border: none;
+}
+
 blockquote {
   background: #f9f9f9;
   border-left: 10px solid #ccc;
@@ -176,6 +180,13 @@ blockquote:before {
 blockquote p {
   display: inline;
   font-style: italic;
+}
+
+hr {
+  border-top: var(--gray) 2px dashed;
+  border-bottom: none;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
 
 .highlight-line {
@@ -353,4 +364,6 @@ a.external-service {
   justify-content: center;
   font-size: 1.25em;
   gap: 0.5rem;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }
