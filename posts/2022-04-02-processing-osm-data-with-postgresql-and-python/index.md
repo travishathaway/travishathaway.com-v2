@@ -36,7 +36,7 @@ I learned quite a bit from this process and now want to report everything I lear
 - [Other tools for processing OSM data](#osm-other-tools)
 - [Python example project](#python-example-project)
 
-All of the examples I reference here can be found on GitHub:
+*Want to just see the code? The link below will send you to an example project I created utilizing everything I talk about in this article:*
 
 <a href="https://github.com/travishathaway/talks/tree/main/processing_osm_data_with_postgres_and_python"
   class="external-service">
@@ -133,3 +133,19 @@ osmium tags-filter \
 For a full list of these commands, go check out the [osmium documentation](https://docs.osmcode.org/osmium/latest/).
 
 ## <a id="python-example-project"></a>Python example project
+
+We've covered just about everything you need to know concerning importing OSM data to your PostgreSQL database and getting it ready for analysis. But, how do we organize this analysis? And how do we make sure that it's as easy as possible to share our work with others when they want to modify it or extend it? In this section, I'm going to walk you through one way to do this with Python by creating command line program similar to the ones used in the examples before.
+
+For the program we want to implement this general workflow:
+
+<div style="text-align: center; margin-top: 2em; margin-bottom: 2em">
+  <a href="./img/data-pipeline.png" title="Data pipeline chart">
+    <img src="./img/data-pipeline.png" width="100%"/><br />
+  </a>
+  <span style="font-size: 0.8em">
+    <b>Figure 1</b> <i>Data pipeline for our OSM data</i>
+  </span>
+</div>
+
+We begin by downloading the data from [download.geofabrik.de](https://download.geofabrik.de) and then extracting just the cities we care about. After this we have to import this into to PostgreSQL, while simultaneously organizing it there in our preferred structure. Finally, we will need a way to generate reports and visualizations from this data.
+
