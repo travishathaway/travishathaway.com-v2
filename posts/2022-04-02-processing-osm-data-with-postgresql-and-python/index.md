@@ -106,9 +106,14 @@ function osm2pgsql.process_node(object)
 end
 ```
 
+If you want to see some more good examples of using Lua scripts to import OSM data checkout the following links:
+
+- [PgOSM Flex](https://github.com/rustprooflabs/pgosm-flex) 👈 *tons of great Lua examples, plus a base Docker image you can use.*
+- [osm2pgsql.org's example page](https://osm2pgsql.org/examples/) 👈 *example use cases and detailed documentation on the flex format*
+
 ## <a id="osm-other-tools"></a>Other tools for processing OSM data
 
-Other than `osm2pgsql`, another great tool for work with OSM data is the `osmium`. This CLI tool can be thought of as the swiss army knife for OSM data as it can perform diffs, extracts and filters among other functions. Using this tool for extracts can be very useful when filtering large OSM datasets. The following example shows how we can use bounding boxes to extract a subset from a larger data file:
+Other than `osm2pgsql`, another great tool for working with OSM data is `osmium`. This CLI tool can be thought of as the swiss army knife for OSM data as it can perform diffs, extracts and filters among other things. Using this tool for extracts can be very useful when filtering large OSM datasets. The following example shows how we can use bounding boxes to extract a subset from a larger data file:
 
 ```bash
 # Bounding box format: min_lon, min_lat, max_lon, max_lat
@@ -119,7 +124,7 @@ osmium extract \
   us-west-latest.osm.pbf
 ```
 
-This will extract all the data for the Portland, Oregon metro area in the U.S. Using extracts this way can be especially practical when the area you want data for spans state boundaries. The Greater Portland metro area actually reaches into Washington, so an extract of Oregon or Washington alone would not suffice. It is instead easier to download a larger area first (i.e. `us-west-latest`) and then extract based on a bounding box.
+This will extract all the data for the Greater Portland Metro Area in the U.S. Using extracts this way can be especially practical when the area you want data for spans state boundaries. The Greater Portland Metro Area actually extends into Washington, so an extract of either Oregon or Washington alone would not suffice. Instead, it's easier to download a larger area first (i.e. `us-west-latest`) and then performing an extract based on a bounding box.
 
 On top of extracting, `osmium` can also provide a way to quickly filter OSM datasets by tag. The following example retrieves everything in the data set where the amenity tag is not null:
 
@@ -136,7 +141,16 @@ For a full list of these commands, go check out the [osmium documentation](https
 
 We've covered just about everything you need to know concerning importing OSM data to your PostgreSQL database and getting it ready for analysis. But, how do we organize this analysis? And how do we make sure that it's as easy as possible to share our work with others when they want to modify it or extend it? In this section, I'm going to walk you through one way to do this with Python by creating command line program similar to the ones used in the examples before.
 
-For the program we want to implement this general workflow:
+But, before we start, let's give our project a purpose. Let's pretend that we have just won a contract with the *Trash Can Alliance of the Globe* (a trash can advocacy group, of course). They are interested in conducting research on trash cans in Germany and need to know the following:
+
+- How many trash cans are located in the top 10 cities in Germany (by population)
+- What's the trash can availability like in these cities? Which cities are the best and which are the worst?
+
+Luckily, this a question that we can answer with the OSM data set. We can query everything with the tag `amenity = waste_basket` to find all the trash cans in Germany. Furthermore, we can use the administrative boundaries in OSM to count all the of the trash cans in a city. We'll compare these cities with each other by calculating a "Trash cans per square kilometer" metric.
+
+### Implementation
+
+Now the we have a game plan, we need to figure out how to implement it. Here's the general workflow we want:
 
 <div style="text-align: center; margin-top: 2em; margin-bottom: 2em">
   <a href="./img/data-pipeline.png" title="Data pipeline chart">
@@ -147,5 +161,16 @@ For the program we want to implement this general workflow:
   </span>
 </div>
 
-We begin by downloading the data from [download.geofabrik.de](https://download.geofabrik.de) and then extracting just the cities we care about. After this we have to import this into to PostgreSQL, while simultaneously organizing it there in our preferred structure. Finally, we will need a way to generate reports and visualizations from this data.
+We begin by downloading the data from [download.geofabrik.de](https://download.geofabrik.de) for the entirety of Germany (`germany-latest.osm.pbf`) and then extracting just the cities we care about. After this we have to import this into to PostgreSQL, while simultaneously organizing it into our preferred structure. Finally, we will need a way to generate reports and visualizations from this data.
 
+To summarize, we have the following four operations we need to perform:
+
+`Download` 👉 `Extract` 👉 `Import` 👉 `Report`
+
+For downloading, we can use the `curl` command:
+
+```bash
+curl -O https://download.geofabrik.de/europe/germany-latest.osm.pbf
+```
+
+To extract the cities 
