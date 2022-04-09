@@ -3,6 +3,7 @@
   --lightgray: #f7f7f7;
   --lightgray-500: #dcdcdc;
   --gray: #C0C0C0;
+  --grayer: #818181;
   --darkgray: #333;
   --navy: #17050F;
   --blue: #082840;
@@ -147,15 +148,15 @@ pre {
   -ms-hyphens: none;
   hyphens: none;
   padding: 1em;
-  margin: .5em 0;
+  margin: 2.5em 0 !important;
   background-color: #f6f6f6;
 }
 code {
-  word-break: break-all;
   background-color: #E7E7E7;
   font-size: 1rem;
   padding: 0px 2px 0px 2px;
   border: 1px var(--dark-red) dashed;
+  word-break: break-word;
 }
 
 pre code {
