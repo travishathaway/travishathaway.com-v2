@@ -82,7 +82,7 @@ Data in OSM is organized in a hierarchical manner, and there are three basic typ
     </div>
     <div>
       <a href="https://wiki.openstreetmap.org/wiki/Relation" title="OSM Wiki Relation">
-        <img src="./img/osm-area.png"/>
+        <img src="./img/osm-relation.png"/>
       </a>
       <div><strong>Relation</strong></div>
     </div>
