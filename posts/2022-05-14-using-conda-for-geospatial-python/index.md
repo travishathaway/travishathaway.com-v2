@@ -78,9 +78,9 @@ Good job, you are *almost* ready to begin your analysis...
 
 <hr />
 
-### What are the best libraries for analysis?
+### Which packages should I actually use?
 
-You may now be asking yourself, "okay, I have my development environment setup, but which libraries should I actually use for my geo-spatial analysis project?" Below, I provide a quick overview of the types of packages available for performing this type of analysis using Python.
+You may now be asking yourself, "okay, I have my development environment setup, but which packages should I actually use for my geo-spatial analysis project?" Below, I provide a quick overview of some common packages available for performing this type of analysis using Python.
 
 #### Rasterio
 
