@@ -13,12 +13,11 @@ feature_image_credits: ''
 
 *This is meant to be a companion post to the talk I gave at PyConDE 2022. This post will still make sense even if you have not watched the talk, but I highly recommend checking it out.* 😉
 
-*Link to the talk coming soon!*
 
-<!--a href="https://travishathaway.com" class="external-service">
+<a href="https://www.youtube.com/watch?v=z9_prnssu0w" class="external-service">
   <span>Click here to watch the talk</span>
   <i class="fa-brands fa-youtube fa-xl" style="color: var(--darkgray)"></i>
-</a-->
+</a>
 
 <hr />
 
