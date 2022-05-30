@@ -16,17 +16,19 @@ feature_image_credits: '
   </div>'
 ---
 
-When embarking on a new geo-spatial analysis project using Python, there are many open-source packages availabel which enable you to do amazing work. Unfortunately, installing these packages can sometimes be a difficult process, especially if you want this work to be easily repeated across a variety of operating systems. In this post, I share how using the power of [conda][conda] and conda environments can make this easier. Additionaly, I provide an overview of some good open-source, geo-spatial packages to help kick-start and enable your analysis.
+## Introduction
+
+As I have alluded to in previous posts ([Processing OpenStreetMap Data with PostgreSQL in Python](/posts/2022-04-02-processing-osm-data-with-postgresql-and-python)), the Python programming language can be a very powerful tool for geo-spatial analysis. This is primarily because of the many great open-source packages out there at our disposal. Unfortunately, installing these packages can sometimes be a difficult process, especially if you want this to be easily repeated across a variety of operating systems (e.g. Windows, OSX, Linux, etc.). In this post, I explain how [conda][conda] and conda environments can make managing these packages and sharing them across workspaces easier. Additionally, I provide an overview of some good open-source, geo-spatial packages to help kick-start and enable your analysis.
 
 ### Why conda?
 
-[conda][conda] is an operating system agnostic package manager which allows you to install many different types of programming language libraries and software on your computer (referred to as "packages"). Many of these packages are Python libraries, but unlike a Python specific package manager like `pip`, `conda` allows you to install non-python dependencies as well. For applications in GIS, this can be especially useful because many geo-spatial Python packages rely on underlying libraries such as [gdal][gdal] which is a C/C++ dependency that can be tricky to install on certain operating systems (e.g OSX or Windows).
+[conda][conda] is an operating system agnostic package manager which allows you to install many different types of programming language libraries and software on your computer (referred to as "packages"). Many of these packages are Python libraries, but unlike a Python specific package manager like [pip](https://pip.pypa.io/en/stable/), conda allows you to install non-Python dependencies as well. For applications in GIS, this can be especially useful because many geo-spatial Python packages rely on underlying libraries such as [gdal][gdal] which is a C/C++ dependency that can be tricky to install on certain operating systems (e.g. Apple or Windows).
 
 If you do not have [conda][conda] currently installed on your computer, go [here to download and run the installer][conda-install].
 
 ### Preparing your analysis project
 
-Once you have this installed, the best way to stay organized with projects is by using environments and environment config files. Environments are what allow you to separate your dependencies from each other and are very similar to the built-in virtual environments used often with Python. But, with `conda` virtual environments, you also gain the ability to install different Python versions regardless of which Python version you have available on you computer currently.
+Once you have conda installed, the best way to stay organized with your projects is using environments and environment config files. Environments are what allow you to separate your dependencies from each other and are very similar to the built-in virtual environments used often with Python. But, with `conda` virtual environments, you also gain the ability to install different Python versions regardless of which Python version you have available on you computer currently.
 
 For example, the following command will give you an environment with the latest Python 3.10:
 
@@ -34,7 +36,7 @@ For example, the following command will give you an environment with the latest 
 $ conda create -n geo-analysis python=3.10
 ```
 
-As your project dependency list grows, it's also a good idea to begin organizing these in an environment configuration file. Environment configuration files for conda use the YAML format. An example configuration is shown below:
+As your project dependency list grows, it's also a good idea to begin organizing these in an environment configuration file. Environment configuration files for conda use the YAML format, and an example of this is shown below:
 
 ```yaml
 # environment.yml
@@ -48,15 +50,15 @@ dependencies:
   - rasterio
 ```
 
-Here's a brief explaination of each section:
+To help clarify this configuration file, here is a brief explanation of each section:
 
 #### Name
 
-This is the name of your environment. You will need this later when activating it, so pick something that easy to remember and type. 
+This is the name of your environment. You will need this later when activating it, so pick something that is easy to remember and type. 
 
 #### Channels
 
-Channels are where conda looks to install packages. By default, all conda installs include `defaults`. We also add the community managed `conda-forge` channel because it has a wider select of packages than the defaults.
+Channels are where conda looks to install packages. By default, all conda installs include `defaults`. We also add the community managed `conda-forge` channel because it has a wider selection of packages (i.e. if something cannot be found on `defaults` it's usually possible to find it on `conda-forge`).
 
 #### Dependencies
 
@@ -86,7 +88,7 @@ You may now be asking yourself, "okay, I have my development environment setup, 
 
 **Link:** [https://rasterio.readthedocs.io/](https://rasterio.readthedocs.io/)
 
-Rasterio is another example of library which is built on top of GDAL. Rasterio aims to provide a Pythonic API for developers, and as the name suggests, focuses primarily on raster dataset processing.
+The goal of the Rasterio project is to provide a Pythonic API for working with raster datasets. Under the hood, this project also relies on the well known NumPY library, so those already familiar with those data structures will find this library easier to learn and use. Even if you are not, this project provides extensive documentation and examples to learn from.
 
 #### Shapely
 
@@ -112,7 +114,7 @@ GeoPandas can be thought of as an extension of the popular Pandas library. It ad
 
 Each of the projects mentioned above have very detailed and well thought out documentation. They will be your best next starting points for learning even more.
 
-Also, stay tuned for future articles where I plan on going through some of my own analysis projects with some of the projects mentioned above.
+Also, stay tuned for future articles where I plan on stepping you through my own analysis projects with some of those wonderful libraries mentioned above.
 
 [conda]: https://conda.io
 [conda-install]: https://docs.conda.io/en/latest/miniconda.html 

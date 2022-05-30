@@ -6,7 +6,8 @@
   --grayer: #818181;
   --darkgray: #333;
   --navy: #17050F;
-  --blue: #082840;
+  --blue: #1983d2;
+  --light-blue: #edf7ff;
   --white: #fff;
   --reading-text-width: 75ch;
   --reading-text-width-small: 30em;
@@ -206,6 +207,15 @@ hr {
   margin-bottom: 3em;
 }
 
+.callout {
+  padding: 1.2em;
+}
+
+.callout-info {
+  background-color: var(--light-blue);
+  border-left: solid 5px var(--blue);
+}
+
 .highlight-line {
   display: block;
   padding: 0.125em 1em;
@@ -345,8 +355,6 @@ hr {
 .tmpl-home, .tmpl-post {
   max-width: var(--reading-text-width);
 }
-
-
 
 /* Warning */
 .warning {
