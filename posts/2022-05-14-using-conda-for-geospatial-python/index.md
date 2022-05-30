@@ -22,7 +22,7 @@ As I have alluded to in previous posts ([Processing OpenStreetMap Data with Post
 
 ### Why conda?
 
-[conda][conda] is an operating system agnostic package manager which allows you to install many different types of programming language libraries and software on your computer (referred to as "packages"). Many of these packages are Python libraries, but unlike a Python specific package manager like [pip](https://pip.pypa.io/en/stable/), conda allows you to install non-Python dependencies as well. For applications in GIS, this can be especially useful because many geo-spatial Python packages rely on underlying libraries such as [gdal][gdal] which is a C/C++ dependency that can be tricky to install on certain operating systems (e.g. Apple or Windows).
+[conda][conda] is an operating system agnostic package manager which allows you to install many different types of programming language libraries and software on your computer (referred to as "packages"). Many of these packages are Python libraries, but unlike a Python specific package manager like [pip](https://pip.pypa.io/en/stable/), conda allows you to install non-Python dependencies as well. For applications in GIS, this can be especially useful because many geo-spatial Python packages rely on underlying libraries such as [gdal][gdal] which is a C/C++ dependency that can be tricky to install on certain operating systems (e.g. OSX or Windows).
 
 If you do not have [conda][conda] currently installed on your computer, go [here to download and run the installer][conda-install].
 
