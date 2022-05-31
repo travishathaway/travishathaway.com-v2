@@ -2,7 +2,7 @@
 author: Travis Hathaway
 title: "Using conda for Geo-Spatial Python Development"
 date: 2022-05-14
-description: "While using Python for GIS development, getting your environment setup can be a challenge in and of itself. In this post, I explain how to alleviate this process using conda, and introduce several open-source packages for geo-spatial analysis."
+description: "While using Python for GIS development, getting your environment setup can be a challenge in and of itself. In this post, I explain how to alleviate this process using conda and introduce several open-source packages for geo-spatial analysis."
 featured_image: "/img/post_images/conda_geo"
 featured_image_thumbnail: "/img/post_images/conda_geo_small"
 show_featured_image: true
