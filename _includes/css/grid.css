@@ -97,8 +97,15 @@ pre {
       display: none;
   }
 
+  .postlist-item {
+    display: flex;
+  }
+
+  .postlist-text-content {
+    width: 75%;
+  }
+
   .postlist-item-img {
-    float: right;
     width: 200px;
     height: 100px;
     overflow: hidden;
@@ -107,7 +114,6 @@ pre {
     border-radius: 5px;
   }
   .postlist-item-img img {
-    float: right;
     width: 200px;
     height: 100px;
     overflow: hidden;
