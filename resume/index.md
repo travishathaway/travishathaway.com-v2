@@ -12,18 +12,45 @@ eleventyNavigation:
 <hr />
 
 <div style="float: right">
+  <a href="https://anaconda.com">
+    <img src="img/anaconda.small.png" width="180" height="auto"/>
+  </a>
+</div>
+
+### Anaconda
+
+**Software Engineer** - Berlin, Germany - *March 2022 - Present*
+
+Anaconda is a company that makes tools for data science and enables companies to securely and effectively use open-source. I worked on the team that led core development for the conda package manager.
+
+#### Notable accomplishments:
+
+- Built out a plugins system for conda that enabled faster feature development and innovation
+- Created plugins for telemetry collection and more secure authentication
+
+<br />
+<br />
+<br />
+
+<div style="float: right">
   <a href="https://uni-kiel.de">
     <img src="img/cau-logo.png" width="180" height="auto"/>
   </a>
 </div>
 
 ### Christian-Albrechts Universität zu Kiel
+
 **Part time Student Assistant** - Kiel, Germany - *April 2020 - October 2021*
+
+Christian-Albrechts University was where I did my masters studies. I worked as a student aid performing a variety of tasks centered around technology.
+
+#### Notable accomplishments:
 
 - Led technology training for our online learning platform, giving instructors greater flexibility and more abilities when organizing their courses.
 - Performed a data migration for building management which allowed them to see 10 years of utility usage for the entire university.
-- Proof read English writing for websites and scientific papers.
 
+<br />
+<br />
 <br />
 
 <div style="float: right">
@@ -33,11 +60,22 @@ eleventyNavigation:
 </div>
 
 ### CAPA Strategies
+
 **Software Engineer** - Portland, OR, USA (Remote) - *January 2020- October 2021*
+
+CAPA strategies makes software that help protect communities from the adverse effects of climate change. I was happy to help work with them as a contractor and volunteer to help prototype several applications for them.
+
+#### Notable accomplishments:
 
 - Developed frontend web applications providing customers with an interactive experience for exploring study results.
 - Researched and developed web applications for managing science projects to increase productivity and allow new business possibilities.
 
+<div class="callout callout-info">
+    <b>Fun fact</b>: my work here as a contractor and volunteer provided inspiration for me to get my masters degree 🤩
+</div>
+
+<br />
+<br />
 <br />
 
 <div style="float: right">
@@ -47,12 +85,18 @@ eleventyNavigation:
 </div>
 
 ### Vacasa
+
 **Software Engineer** - Portland, OR, USA - *2018-2019*
 
-- Helped lead backend development on API projects which allowed the business to break away from monolithic application structures and grow the business faster.
-- Developed new application deployment pipelines which gave our development team greater speed and flexibility when deploying new releases.
-- Led employee training on AWS and frequently led talks explaining technical design decisions for solutions developed for the company.
+Vacasa is a vacation rental platform, and the software I worked on was a Python API server using PostgreSQL as a data storage backend.
 
+#### Notable accomplishments:
+
+- Worked in a team that setup a new service for managing rental units
+- Led workshops training employees on using AWS
+
+<br />
+<br />
 <br />
 
 <div style="float: right">
@@ -62,40 +106,17 @@ eleventyNavigation:
 </div>
 
 ### Campaign Monitor
+
 **Software Engineer** - Portland, OR, USA - *2017-2018*
 
-- Served as a Python code quality expert whose guidance helped reduce production errors and increase code readability.
-- Designed services to break up a monolithic code base which lead to a more agile, easier to test code base.
-- Implemented application features leading to new sales and retention of current customers in the area of integrations and user and account management.
+The software I worked on here was an email marketing platform primarily written in Python using PostgreSQL as a data storage backend.
+
+#### Notable accomplishments:
+
+- Improved the capabilities and reliability or third party integrations for the application
+- Added new features to the account management aspects 
 
 <br />
-
-<div style="float: right">
-  <img src="img/Factory.svg" width="100" height="auto" />
-</div>
-
-### Pacific Coast Distributors
-**Software Engineer** - Portland, OR, USA —  *2015-2017*
-
-- Developed and maintained full featured shipping and inventory management software with an emphasis on scalability.
-- Identified flaws in database design and implemented effective fixes that helped our business gain new insights.
-- Implemented automated testing and integrated it with current release procedures leading to a reduction in production errors.
-
-<br />
-
-<div style="float: right">
-  <a href="https://www.rocket-internet.com/">
-    <img src="img/rocket-internet-logo.png" width="180" height="auto" />
-  </a>
-</div>
-
-### Rocket Internet
-**Software Engineer** - Berlin, Germany — *2014-2015*
-
-- Designed scalable marketing data collection systems whose data was the foundation for our marketing reports.
-- Built web services and managed deployment for our marketing tools application with a focus on being able to easily onboard new developers.
-- Created a series of flexible, tested, and well documented Python libraries for easily accessing reporting data.
-
 <br />
 
 ## Education
