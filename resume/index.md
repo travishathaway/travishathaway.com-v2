@@ -27,6 +27,7 @@ Anaconda is a company that makes tools for data science and enables companies to
 
 - Built out a plugins system for conda that enabled faster feature development and innovation
 - Created plugins for telemetry collection and more secure authentication
+- Led efforts to renovate conda’s web presence by launching [conda.org](https://conda.org) and implementing new documentation themes
 
 <br />
 <br />
