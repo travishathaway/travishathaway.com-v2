@@ -390,3 +390,66 @@ a.external-service {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
+
+/* Table Styles */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: var(--reading-text-width);
+  margin: 2em 0;
+  font-size: 1.15rem;
+  background-color: var(--white);
+}
+
+table thead {
+  background-color: var(--lightgray);
+  border-bottom: 2px solid var(--gray);
+}
+
+table th {
+  padding: 0.75em 1em;
+  text-align: left;
+  font-weight: bold;
+  color: var(--darkgray);
+  border: 1px solid var(--lightgray-500);
+}
+
+table td {
+  padding: 0.75em 1em;
+  border: 1px solid var(--lightgray-500);
+  color: var(--darkgray);
+  line-height: 1.5;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: var(--white);
+}
+
+table tbody tr:nth-child(even) {
+  background-color: var(--lightgray);
+}
+
+table tbody tr:hover {
+  background-color: var(--light-blue);
+  transition: background-color 0.2s ease;
+}
+
+table caption {
+  caption-side: bottom;
+  padding: 0.75em;
+  font-style: italic;
+  color: var(--grayer);
+  text-align: left;
+}
+
+/* Responsive tables */
+@media screen and (max-width: 768px) {
+  table {
+    font-size: 0.9rem;
+  }
+
+  table th,
+  table td {
+    padding: 0.5em;
+  }
+}

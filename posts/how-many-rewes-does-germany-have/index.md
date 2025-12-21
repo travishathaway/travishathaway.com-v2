@@ -16,7 +16,7 @@ feature_image_credits: '
   </div>'
 ---
 
-According to their [official website](https://www.rewe-group.com/de/unternehmen/struktur-und-vertriebslinien/rewe/), they have over 3,800 locations in Germany, but I wouldn't be writing an entire blog post about this if I just wanted to direct you to single link. Today, I'm going to show you another way to answer that question and more with OpenStreetMap data, and I'll add even more to this by including the 2022 German Census in my analysis.
+REWE (_pronounced: RAY-veh_) is a one of the largest supermarket chains that you find all across Germany, and according to their [official website](https://www.rewe-group.com/de/unternehmen/struktur-und-vertriebslinien/rewe/), they have over 3,800 locations in Germany. But, I wouldn't be writing an entire blog post about this if I just wanted to direct you to a single link. Today, I'm going to show you another way to answer that question and more with OpenStreetMap data, and I'll add even more to this by including the 2022 German Census in my analysis.
 
 ### Background
 
@@ -27,3 +27,115 @@ I've previously written about [processing OpenStreetMap data](/posts/2022-04-02-
 </div>
 
 So, armed with these datasets, let's figure out how many REWEs Germany has and see what other questions we can answer along the way 🏃‍♂️‍➡️.
+
+--- 
+
+Before we start let me quickly link to some of the wonderful OSS projects that made this work possible:
+
+- [PostgreSQL](https://www.postgresql.org/) with [PostGIS](https://postgis.net) extension 🐘 🌏 as our data storage.
+- [PgOSM Flex](https://pgosm-flex.com/) and [zensus2pgsql](https://travishathaway.github.io/zensus2pgsql) - to import our data from various sources into PostgreSQL.
+- [GeoFabrik](https://downloads.geofabrik.de) and [OpenStreetMap](https://openstreetmap.org ) as the primary data sources (I specifically used the [Germany](https://download.geofabrik.de/europe/germany.html) dataset from 2025-12-19 for this article)
+- [Plotly](https://plotly.com/nodejs) as our primary visualization library.
+
+
+### What exactly is a _REWE_?
+
+This may sound like an obvious question, but it actually isn't. To me a REWE is a store offering a full selection of fruit, produce, baked goods and the rest of the essentials that one would expect to find in a full service supermarket. REWE complicates this assumption though because not all of their stores fit this description. For example, some may simply be drink markets while other are "express" convenience stores attached to gas stations.
+
+Now, we take the assumption above and translate it to an SQL query that can find all the REWE stores in Germany. Here's what I came up with:
+
+```sql
+WITH rewes AS (
+	SELECT 
+		poly.name,
+		ST_Centroid(poly.geom)
+	FROM
+		osm.poi_polygon poly
+	WHERE 
+		name ilike 'rewe%'
+	AND name NOT ilike '%to go' 
+	AND name NOT ilike '%express'
+	AND name NOT ilike '%getränke%'
+	aND osm_type = 'shop'
+	aND osm_subtype = 'supermarket'
+
+	UNION
+
+	SELECT
+		pt.name,
+		pt.geom
+	FROM
+		osm.poi_point pt
+	WHERE
+		name ilike 'rewe%'
+	AND name NOT ilike '%to go' 
+	AND name NOT ilike '%express'
+	AND name NOT ilike '%getränke%'
+	AND osm_type = 'shop'
+	AND osm_subtype = 'supermarket'
+)
+
+SELECT COUNT(*) FROM rewes;
+```
+
+| Total REWEs |
+|-------------|
+| 3,751       |
+
+
+Nice, this value lines up well with the value I got from the source I linked to earlier, so it looks like I did a pretty good job with the query. I went back and forth a couple times to get it right though, so I encourage you to always inspect the rows you get back to make sure everything looks correct. Also, beware of typos! I fixed two myself while looking through the results of these queries using my account at [openstreetmap.org](https://openstreetmap.org).
+
+
+### Bundesländer
+
+To make this a little more interesting, let's bring the political boundaries of Germany's Bundesländer (i.e. states) to see how well distributed these REWEs are:
+
+```sql
+WITH rewes AS(
+  -- snip, snip ✂️
+)
+states AS (
+	SELECT 
+		name,
+		geom,
+		ST_Area(geom) AS area
+	FROM
+		osm.place_polygon_nested
+	WHERE 
+		nest_level = 2 AND admin_level <=4
+)
+SELECT
+	s.name,
+	COUNT(*) AS rewes,
+	s.area / 1000000,
+	COUNT(*) / (s.area / 1000000) AS rewes_per_kilometer
+FROM
+	states s
+JOIN
+	rewes r
+ON
+	ST_Within(r.geom, s.geom)
+GROUP BY
+	s.name, s.area
+ORDER BY
+	count(*) / (s.area / 1000000) desc ;
+```
+
+| Name | REWEs | Total area (sq km) | REWE per sq km|
+|------|-------|--------------------|---------------|
+| Berlin | 159 | 891.14 | 0.1784 |
+| Bremen | 38 | 419.82 | 0.0905 |
+| Hamburg | 83 | 980.89 | 0.0846 |
+| Nordrhein-Westfalen | 828 | 34112.60 | 0.0243 |
+| Hessen | 461 | 21115.74 | 0.0218 |
+| Saarland | 41 | 2572.07 | 0.0159 |
+| Baden-Württemberg | 427 | 36014.96 | 0.0119 |
+| Rheinland-Pfalz | 187 | 19857.76 | 0.0094 |
+| Bayern | 601 | 70576.52 | 0.0085 |
+| Thüringen | 114 | 16202.79 | 0.0070 |
+| Niedersachsen | 328 | 53462.14 | 0.0061 |
+| Schleswig-Holstein | 156 | 25583.46 | 0.0061 |
+| Sachsen | 110 | 18449.41 | 0.0060 |
+| Brandenburg | 105 | 29653.96 | 0.0035 |
+| Sachsen-Anhalt | 54 | 20554.80 | 0.0026 |
+| Mecklenburg-Vorpommern | 66 | 31007.43 | 0.0021 |
