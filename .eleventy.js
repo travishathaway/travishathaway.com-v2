@@ -51,6 +51,11 @@ module.exports = function(eleventyConfig) {
     return new CleanCSS({}).minify(code).styles;
   });
 
+  // Plotly shortcode for loading charts from JSON data files
+  eleventyConfig.addShortcode("plotly", function(dataPath, divId = 'plotly-chart', height = '500px') {
+    return `<div id="${divId}" style="width:100%;height:${height};"></div><script>(function() {var div = document.getElementById('${divId}');fetch('${dataPath}').then(response => {if (!response.ok) throw new Error('Failed to load chart data from ${dataPath}');return response.json();}).then(data => {Plotly.newPlot('${divId}', data.data, data.layout, data.config || {responsive: true});}).catch(error => {div.innerHTML = '<p style="color:red;padding:1em;border:1px solid red;">Error loading chart: ' + error.message + '</p>';console.error('Plotly chart error:', error);});})();</script>`;
+  });
+
   // Create an array of all tags
   eleventyConfig.addCollection("tagList", function(collection) {
     let tagSet = new Set();
@@ -64,6 +69,9 @@ module.exports = function(eleventyConfig) {
   // Copy the `img` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/plotly.js/dist/plotly.min.js": "js/plotly.min.js"
+  });
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
