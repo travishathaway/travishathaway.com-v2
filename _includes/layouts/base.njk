@@ -13,6 +13,9 @@
       {% include "css/post.css" %}
       {% include "css/grid.css" %}
       {% include "css/fontawesome.css" %}
+      {%if custom_css %}
+      {% include custom_css %}
+      {% endif %}
     {% endset %}
 
     <style>
@@ -68,6 +71,16 @@
     <div class="side-panel-image"></div>
 
     <footer>© 2022 Travis Hathaway</footer>
+
+    {% set js %}
+    {% if custom_js %}
+      {% include custom_js %}
+    {% endif %}
+    {% endset %}
+
+    <script type="module">
+      {{ js | jsmin | safe }}
+    </script>
 
     <!-- Current page: {{ page.url | url }} -->
   </body>

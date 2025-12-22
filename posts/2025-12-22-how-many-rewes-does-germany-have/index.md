@@ -8,6 +8,8 @@ featured_image_thumbnail: "/img/post_images/how-many-rewes-does-germany-have-800
 show_featured_image: true
 tags: [gis, urban geography]
 layout: layouts/post_with_plotly.njk
+custom_css: "posts/2025-12-22-how-many-rewes-does-germany-have/graphs.css"
+custom_js: "posts/2025-12-22-how-many-rewes-does-germany-have/graphs.js"
 feature_image_credits: '
   <div style="font-size: 0.8em; margin-bottom: 2em">
     <i>
@@ -15,6 +17,8 @@ feature_image_credits: '
     </i>
   </div>'
 ---
+
+<!-- script src="graphs.js" type="module"></script -->
 
 REWE (_pronounced: RAY-veh_) is a one of the largest supermarket chains that you find all across Germany, and according to their [official website](https://www.rewe-group.com/de/unternehmen/struktur-und-vertriebslinien/rewe/), they have over 3,800 locations in Germany. But, I wouldn't be writing an entire blog post about this if I just wanted to direct you to a single link. Today, I'm going to show you another way to answer that question and more with OpenStreetMap data, and I'll add even more to this by including the 2022 German Census in my analysis.
 
@@ -92,7 +96,7 @@ To make this a little more interesting, let's bring the political boundaries of 
 
 ```sql
 WITH rewes AS(
-  -- snip, snip ✂️
+  -- snip, snip ✂️ (same as example from above)
 )
 states AS (
 	SELECT 
@@ -121,21 +125,9 @@ ORDER BY
 	count(*) / (s.area / 1000000) desc ;
 ```
 
-| Name | REWEs | Total area (sq km) | REWE per sq km|
-|------|-------|--------------------|---------------|
-| Berlin | 159 | 891.14 | 0.1784 |
-| Bremen | 38 | 419.82 | 0.0905 |
-| Hamburg | 83 | 980.89 | 0.0846 |
-| Nordrhein-Westfalen | 828 | 34112.60 | 0.0243 |
-| Hessen | 461 | 21115.74 | 0.0218 |
-| Saarland | 41 | 2572.07 | 0.0159 |
-| Baden-Württemberg | 427 | 36014.96 | 0.0119 |
-| Rheinland-Pfalz | 187 | 19857.76 | 0.0094 |
-| Bayern | 601 | 70576.52 | 0.0085 |
-| Thüringen | 114 | 16202.79 | 0.0070 |
-| Niedersachsen | 328 | 53462.14 | 0.0061 |
-| Schleswig-Holstein | 156 | 25583.46 | 0.0061 |
-| Sachsen | 110 | 18449.41 | 0.0060 |
-| Brandenburg | 105 | 29653.96 | 0.0035 |
-| Sachsen-Anhalt | 54 | 20554.80 | 0.0026 |
-| Mecklenburg-Vorpommern | 66 | 31007.43 | 0.0021 |
+Below is a map of Germany showing how many REWEs each Bundesland has:
+
+**Map of REWEs in Germany**
+
+<div id="map-container"></div>
+<div id="table-container"></div>

@@ -1,0 +1,82 @@
+{
+  "Berlin": {
+    "rewes": 159,
+    "total_area_sq_km": 891.14,
+    "rewes_per_sq_km": 0.1784
+  },
+  "Bremen": {
+    "rewes": 38,
+    "total_area_sq_km": 419.82,
+    "rewes_per_sq_km": 0.0905
+  },
+  "Hamburg": {
+    "rewes": 83,
+    "total_area_sq_km": 980.89,
+    "rewes_per_sq_km": 0.0846
+  },
+  "Nordrhein-Westfalen": {
+    "rewes": 828,
+    "total_area_sq_km": 34112.60,
+    "rewes_per_sq_km": 0.0243
+  },
+  "Hessen": {
+    "rewes": 461,
+    "total_area_sq_km": 21115.74,
+    "rewes_per_sq_km": 0.0218
+  },
+  "Saarland": {
+    "rewes": 41,
+    "total_area_sq_km": 2572.07,
+    "rewes_per_sq_km": 0.0159
+  },
+  "Baden-Württemberg": {
+    "rewes": 427,
+    "total_area_sq_km": 36014.96,
+    "rewes_per_sq_km": 0.0119
+  },
+  "Rheinland-Pfalz": {
+    "rewes": 187,
+    "total_area_sq_km": 19857.76,
+    "rewes_per_sq_km": 0.0094
+  },
+  "Bayern": {
+    "rewes": 601,
+    "total_area_sq_km": 70576.52,
+    "rewes_per_sq_km": 0.0085
+  },
+  "Thüringen": {
+    "rewes": 114,
+    "total_area_sq_km": 16202.79,
+    "rewes_per_sq_km": 0.0070
+  },
+  "Niedersachsen": {
+    "rewes": 328,
+    "total_area_sq_km": 53462.14,
+    "rewes_per_sq_km": 0.0061
+  },
+  "Schleswig-Holstein": {
+    "rewes": 156,
+    "total_area_sq_km": 25583.46,
+    "rewes_per_sq_km": 0.0061
+  },
+  "Sachsen": {
+    "rewes": 110,
+    "total_area_sq_km": 18449.41,
+    "rewes_per_sq_km": 0.0060
+  },
+  "Brandenburg": {
+    "rewes": 105,
+    "total_area_sq_km": 29653.96,
+    "rewes_per_sq_km": 0.0035
+  },
+  "Sachsen-Anhalt": {
+    "rewes": 54,
+    "total_area_sq_km": 20554.80,
+    "rewes_per_sq_km": 0.0026
+  },
+  "Mecklenburg-Vorpommern": {
+    "rewes": 66,
+    "total_area_sq_km": 31007.43,
+    "rewes_per_sq_km": 0.0021
+  }
+}
