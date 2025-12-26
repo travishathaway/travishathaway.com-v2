@@ -2,7 +2,7 @@
 author: Travis Hathaway
 title: "How Many REWEs Does Germany Have?"
 date: 2025-12-21
-description: Check out the slides from my recent presentation about asyncio at Python Users Berlin and read an exciting Python related announcement.
+description: In this post, I use OpenStreetMap and German Census data to answer this question and more. I use PostgreSQL and PostGIS as the primary tool to answer these questions and there will be some nice looking charts too 😍 📊 🌍.
 featured_image: "/img/post_images/how-many-rewes-does-germany-have"
 featured_image_thumbnail: "/img/post_images/how-many-rewes-does-germany-have-800"
 show_featured_image: true
@@ -18,29 +18,30 @@ feature_image_credits: '
   </div>'
 ---
 
-<!-- script src="graphs.js" type="module"></script -->
+REWE (_pronounced: RAY-veh_) is a one of the largest supermarket chains in Germany, and according to their [official website](https://www.rewe-group.com/de/unternehmen/struktur-und-vertriebslinien/rewe/), they have over 3,800 locations country-wide. But, I wouldn't be writing an entire blog post just to answer this simple question. This is a post about using OpenStreetMap and German Census data to conduct exploratory data analysis. I'll walk you through how to calculate how many REWEs are in Germany plus answer some other interesting questions along the way.
 
-REWE (_pronounced: RAY-veh_) is a one of the largest supermarket chains in Germany, and according to their [official website](https://www.rewe-group.com/de/unternehmen/struktur-und-vertriebslinien/rewe/), they have over 3,800 locations in Germany. But, I wouldn't be writing an entire blog post about this if I just wanted to direct you to a single link. Today, I'm going to show you another way to answer that question and more with OpenStreetMap data, and I'll add even more to this by including the 2022 German Census in my analysis.
+---
 
 ### Background
 
-I've previously written about [processing OpenStreetMap data](/posts/2022-04-02-processing-osm-data-with-postgresql-and-python/) and even included a [fun waste basket analysis](/posts/2022-04-02-processing-osm-data-with-postgresql-and-python/#report), but since then, things have changed and new data has become available, most notably the [2022 German Census](www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Zensus2022/_inhalt.html). For me, the most interesting part of this dataset was their [Zensus Atlas](https://atlas.zensus2022.de/) that gives detailed demographic data at a resolution of 100 meters (previously this was only offered at a 1 kilometer resolution).
+I've previously written about [processing OpenStreetMap data](/posts/2022-04-02-processing-osm-data-with-postgresql-and-python/) and even included a [fun waste basket analysis](/posts/2022-04-02-processing-osm-data-with-postgresql-and-python/#report), but since then, things have changed and new data has become available, most notably the [2022 German Census](www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Zensus2022/_inhalt.html). For me, the most interesting part of this dataset is the [Zensus Atlas](https://atlas.zensus2022.de/) that gives detailed demographic data at a resolution of 100 meters (previously this was only offered at a 1 kilometer resolution).
 
 <div class="callout callout-info">
-  I liked Zensus Atlas dataset so much that I even wrote a CLI tool for importing it into PostgreSQL. It's called <a href="https://travishathaway.github.io/zensus2pgsql/" title="Link to zensus2pgsql project documentation">zensus2pgsql</a>. Please check it out and leave star if you find it useful 🌟.
+  I liked th Zensus Atlas dataset so much that I even wrote a CLI tool for importing it into PostgreSQL. It's called <a href="https://travishathaway.github.io/zensus2pgsql/" title="Link to zensus2pgsql project documentation">zensus2pgsql</a>. Please check it out and leave star if you find it useful 🌟.
 </div>
 
-So, armed with these datasets, let's figure out how many REWEs Germany has and see what other questions we can answer along the way 🏃‍♂️‍➡️.
+To run all the queries I show in this post, loaded up a database with the entire Germany dataset from GeoFabrik and imported all the census data with zensus2pgsql. If you want to, follow along with this post, check out the documentaion for [PgOSM Flex](https://pgosm-flex.com) and [zensus2pgsql](https://travishathaway.github.io/zensus2pgsql) first. Loading these datasets into PostgreSQL takes about fours. 
 
---- 
-
-Before we start let me quickly link to some of the wonderful OSS projects that made this work possible:
+Here's a full list of the wonderful OSS projects that made this work possible:
 
 - [PostgreSQL](https://www.postgresql.org/) with [PostGIS](https://postgis.net) extension 🐘 🌏 as our data storage.
 - [PgOSM Flex](https://pgosm-flex.com/) and [zensus2pgsql](https://travishathaway.github.io/zensus2pgsql) - to import our data from various sources into PostgreSQL.
 - [GeoFabrik](https://downloads.geofabrik.de) and [OpenStreetMap](https://openstreetmap.org ) as the primary data sources (I specifically used the [Germany](https://download.geofabrik.de/europe/germany.html) dataset from 2025-12-19 for this article)
 - [Observable Plot](https://observablehq.com/plot/) as our primary visualization library.
 
+So, now that we all of the preparation out of the way, let's figure out how many REWEs Germany has and see what other questions we can answer along the way.
+
+---
 
 ### What exactly is a _REWE_?
 
@@ -76,14 +77,14 @@ SELECT COUNT(*) FROM rewes;
 | 3,750       |
 
 
-Nice, this value lines up well with the value I got from the source I linked to earlier, so it looks like I did a pretty good job with the query. I went back and forth a couple times to get it right though, so I encourage you to always inspect the rows you get back to make sure everything looks correct. Also, beware of typos! I fixed two myself while looking through the results of these queries using my account at [openstreetmap.org](https://openstreetmap.org).
+Nice, this value lines up well with the value I got from the source I linked to earlier, so it looks like I did a pretty good job with the query. I went back and forth a couple times to get it right though, so I encourage you to always inspect the rows you get back to make sure everything looks correct. If notice anything wrong with the data (like typos), I encourage you to fix these yourself by logging into [openstreetmap.org](https://openstreetmap.org).
 
 
 ### Which Bundesland has the most?
 
-To make this  a little more interesting, let's now figure out which Bundesland has the most REWEs. To make this comparison fair, we can't just count the absolute number of REWEs because that will give Bundeslands with a higher population an unfair advantage; therefore, we'll use a per capita measurement to better compare Bundeslands with each other (i.e. REWEs per 10k inhabitants).
+To make this a little more interesting, let's now figure out which Bundesland has the most REWEs. To make sure Bundeslands with higher populations aren't given a fair advantage, we use a per capita measurement.
 
-Here's a query that uses both our OpenStreetMap and census data sets to calculate our desired statstics:
+Here's a query that uses both our OpenStreetMap and census data sets to calculate the desired statstics:
 
 ```sql
 WITH rewes AS(
@@ -133,7 +134,7 @@ GROUP BY
 Now we can take this data and visualize it on a map:
 
 <div class="map-container">
-	<h4 style="margin-top: 5px; margin-left: 5px">Statistics about REWEs in Germany</h4>
+	<h4 style="margin: 5px">Statistics about REWEs in Germany</h4>
 	<div data-source="data/rewe-data.json" class="map"></div>
 </div>
 
@@ -141,9 +142,9 @@ We can see that **Sachsen-Anhalt** is the clear winner here followed closely by 
 
 ### Which Bundesland has the most accessible REWEs?
 
-The final question we'll ask has to do with accessibility, and by this I mean how close the REWEs are to people who live there. How exactly should we measure this then? According the to the [15-minute city urban planning concept][15-minute-city], most amenities in a city are ideally reachable within 15 minutes by walking, biking or public transit. So, with this in mind let's see how many people in Germany live witin 1.3km (about 15 minutes of walking) of a REWE.
+The final question we'll ask has to do with accessibility, and by this I mean how easily these REWEs can be reached. But, how exactly should we measure this? One way to do this is by using the [15-minute city urban planning concept][15-minute-city] that states most amenities in a city are ideally reachable within 15 minutes by walking, biking or public transit. So, with this in mind let's see how many people in Germany live witin 1.3km (about 15 minutes of walking) of a REWE.
 
-To do this, we'll use the `ST_Buffer` function in PostGIS to draw a 1.3km buffer around all the the REWEs in Germany and then see how many people live within this buffer. We'll also split this up by Bundesland to again compare each other by the percentage of population living within 1.3km of a REWE:
+To do this, we'll use the `ST_Buffer` function in PostGIS to draw a 1.3km buffer around all the the REWEs in Germany and then see how many people live within this buffer. We'll also split this up by Bundesland to again compare each other by the percentage of the population living within 1.3km of a REWE:
 
 ```sql
 WITH rewes AS (
@@ -153,7 +154,7 @@ state_pop AS (
   -- snip, snip ✂️ (same as example from above)
 ),
 rewe_buffer AS (
-    SELECT
+	SELECT
 		s.name,
 		ST_SimplifyPreserveTopology(
         	ST_Union(ST_Buffer(r.geom, 1300)),
@@ -182,8 +183,10 @@ ON s.name = r.name
 GROUP BY s.name, s.population;
 ```
 
+With this data we can create the following map:
+
 <div class="map-container">
-  <h4>REWE accessibility in Germany</h4>
+  <h4 style="margin: 5px">REWE accessibility in Germany</h4>
   <div 
     data-source="data/rewe-accessibility.json" 
     data-metrics="percent_near,pop_near"
@@ -191,6 +194,12 @@ GROUP BY s.name, s.population;
     class="map">
   </div>
 </div>
+
+Upon seeing this, one thing that immediately stuck out to me was how high the percentages are for Bremen, Hamburg and Berlin at 63.9%, 72.3% and 78.3%, respectively. All three of these Bundeslands are highly urban and that's mostly likely why a very high percentage their population live so close to REWEs.
+
+Another thing I found interesting was that even though Sachsen-Anhalt has the highest per-captia of REWEs in Germany, it has the lowest accessibility of REWEs. This could be intersting to research further because I'm not sure why this is the case, but if I were to do so, I would first divide the Bundesland up into two categories: rural and urban. I have a feeling that the urban areas probably enjoy a similar accessibility to other cities in Germany and that their rural population is living further away from their REWEs.
+
+## Conclusion
 
 
 

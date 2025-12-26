@@ -26,6 +26,16 @@ const metricConfig = {
     }
 };
 
+const legendFormatter = {
+    percent_near: {
+        format: (val) => (val * 100).toFixed(0) + '%'
+    },
+    rewes_per_10k: {
+        format: (val) => Math.round(val),
+    }
+}
+
+
 // Create a shared tooltip for all maps
 const tooltip = document.createElement("div");
 tooltip.className = "custom-tooltip plot-style-tooltip";
@@ -39,7 +49,7 @@ function formatLegendNumber(value) {
     } else if (value >= 1000) {
         return (value / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
     }
-    return Math.round(value.toFixed(0));
+    return Math.round(value);
 }
 
 /**
@@ -114,7 +124,7 @@ async function initializeMap(container, geojson) {
         const maxValue = d3.max(values);
 
         // Get the formatter for this metric
-        const metricFormatter = metricConfig[metric]?.format || formatLegendNumber;
+        const metricFormatter = legendFormatter[metric]?.format ||  metricConfig[metric]?.format || formatLegendNumber;
 
         // Create the plot
         const map = Plot.plot({
@@ -130,7 +140,8 @@ async function initializeMap(container, geojson) {
                     channels: {
                         state: d => d.properties.name,
                         value: d => d.properties[metric]
-                    }
+                    },
+                    marginTop: 30
                 })
             ],
             color: {
