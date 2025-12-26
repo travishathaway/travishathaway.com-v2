@@ -177,6 +177,8 @@ code {
 
 pre code {
   border: none;
+  word-break: normal;
+  white-space: pre;
 }
 
 blockquote {

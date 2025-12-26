@@ -1,0 +1,82 @@
+{
+  "Baden-Württemberg": {
+    "pop_near": 3856061,
+    "population": 11093335,
+    "percent_near": 0.34760160042043262914
+  },
+  "Bayern": {
+    "pop_near": 4755035,
+    "population": 13013209,
+    "percent_near": 0.36540064791090345202
+  },
+  "Berlin": {
+    "pop_near": 2815120,
+    "population": 3595270,
+    "percent_near": 0.78300656139872666031
+  },
+  "Brandenburg": {
+    "pop_near": 705495,
+    "population": 2525867,
+    "percent_near": 0.27930805541226042385
+  },
+  "Bremen": {
+    "pop_near": 442329,
+    "population": 692262,
+    "percent_near": 0.63896183814798443364
+  },
+  "Hamburg": {
+    "pop_near": 1307708,
+    "population": 1808552,
+    "percent_near": 0.72306906298519478566
+  },
+  "Hessen": {
+    "pop_near": 3227557,
+    "population": 6201895,
+    "percent_near": 0.52041464745855903720
+  },
+  "Mecklenburg-Vorpommern": {
+    "pop_near": 491630,
+    "population": 1564024,
+    "percent_near": 0.31433660864539163082
+  },
+  "Niedersachsen": {
+    "pop_near": 2302811,
+    "population": 7918095,
+    "percent_near": 0.29082891781419647024
+  },
+  "Nordrhein-Westfalen": {
+    "pop_near": 8217903,
+    "population": 17868438,
+    "percent_near": 0.45991166099689295729
+  },
+  "Rheinland-Pfalz": {
+    "pop_near": 1214402,
+    "population": 4088634,
+    "percent_near": 0.29701900439119764694
+  },
+  "Saarland": {
+    "pop_near": 271364,
+    "population": 1006142,
+    "percent_near": 0.26970745680033235865
+  },
+  "Sachsen": {
+    "pop_near": 1209698,
+    "population": 4029125,
+    "percent_near": 0.30023838922843049049
+  },
+  "Sachsen-Anhalt": {
+    "pop_near": 510222,
+    "population": 2141681,
+    "percent_near": 0.23823435889845406482
+  },
+  "Schleswig-Holstein": {
+    "pop_near": 1204025,
+    "population": 2917024,
+    "percent_near": 0.41275800267670063736
+  },
+  "Thüringen": {
+    "pop_near": 768104,
+    "population": 2106271,
+    "percent_near": 0.36467482104629461261
+  }
+}

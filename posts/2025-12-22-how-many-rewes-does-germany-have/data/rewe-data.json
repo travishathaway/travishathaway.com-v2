@@ -1,0 +1,114 @@
+{
+  "Berlin": {
+    "rewes": 159,
+    "total_area_sq_km": 891.14,
+    "rewes_per_sq_km": 0.1784,
+    "population": 3595270,
+    "rewes_per_10k": 2.261176100628931
+  },
+  "Bremen": {
+    "rewes": 38,
+    "total_area_sq_km": 419.82,
+    "rewes_per_sq_km": 0.0905,
+    "population": 692262,
+    "rewes_per_10k": 1.821742105263158
+  },
+  "Hamburg": {
+    "rewes": 83,
+    "total_area_sq_km": 980.89,
+    "rewes_per_sq_km": 0.0846,
+    "population": 1808552,
+    "rewes_per_10k": 2.178978313253012
+  },
+  "Nordrhein-Westfalen": {
+    "rewes": 828,
+    "total_area_sq_km": 34112.6,
+    "rewes_per_sq_km": 0.0243,
+    "population": 17868438,
+    "rewes_per_10k": 2.158023913043478
+  },
+  "Hessen": {
+    "rewes": 461,
+    "total_area_sq_km": 21115.74,
+    "rewes_per_sq_km": 0.0218,
+    "population": 6201895,
+    "rewes_per_10k": 1.3453134490238612
+  },
+  "Saarland": {
+    "rewes": 41,
+    "total_area_sq_km": 2572.07,
+    "rewes_per_sq_km": 0.0159,
+    "population": 1006142,
+    "rewes_per_10k": 2.4540048780487806
+  },
+  "Baden-Württemberg": {
+    "rewes": 427,
+    "total_area_sq_km": 36014.96,
+    "rewes_per_sq_km": 0.0119,
+    "population": 11093335,
+    "rewes_per_10k": 2.5979707259953164
+  },
+  "Rheinland-Pfalz": {
+    "rewes": 188,
+    "total_area_sq_km": 19857.76,
+    "rewes_per_sq_km": 0.0095,
+    "population": 4088634,
+    "rewes_per_10k": 2.1748053191489363
+  },
+  "Bayern": {
+    "rewes": 601,
+    "total_area_sq_km": 70576.52,
+    "rewes_per_sq_km": 0.0085,
+    "population": 13013209,
+    "rewes_per_10k": 2.165259400998336
+  },
+  "Thüringen": {
+    "rewes": 114,
+    "total_area_sq_km": 16202.79,
+    "rewes_per_sq_km": 0.007,
+    "population": 2106271,
+    "rewes_per_10k": 1.8476061403508772
+  },
+  "Niedersachsen": {
+    "rewes": 328,
+    "total_area_sq_km": 53462.14,
+    "rewes_per_sq_km": 0.0061,
+    "population": 7918095,
+    "rewes_per_10k": 2.4140533536585367
+  },
+  "Schleswig-Holstein": {
+    "rewes": 156,
+    "total_area_sq_km": 25583.46,
+    "rewes_per_sq_km": 0.0061,
+    "population": 2917024,
+    "rewes_per_10k": 1.8698871794871794
+  },
+  "Sachsen": {
+    "rewes": 110,
+    "total_area_sq_km": 18449.41,
+    "rewes_per_sq_km": 0.006,
+    "population": 4029125,
+    "rewes_per_10k": 3.6628409090909093
+  },
+  "Brandenburg": {
+    "rewes": 104,
+    "total_area_sq_km": 29653.96,
+    "rewes_per_sq_km": 0.0035,
+    "population": 2525867,
+    "rewes_per_10k": 2.428718269230769
+  },
+  "Sachsen-Anhalt": {
+    "rewes": 54,
+    "total_area_sq_km": 20554.8,
+    "rewes_per_sq_km": 0.0026,
+    "population": 2141681,
+    "rewes_per_10k": 3.9660759259259257
+  },
+  "Mecklenburg-Vorpommern": {
+    "rewes": 66,
+    "total_area_sq_km": 31007.43,
+    "rewes_per_sq_km": 0.0021,
+    "population": 1564024,
+    "rewes_per_10k": 2.3697333333333335
+  }
+}

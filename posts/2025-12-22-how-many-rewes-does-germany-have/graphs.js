@@ -1,171 +1,237 @@
-// Load the GeoJSON data for German Bundesländer
-const geojson = await d3.json("data/4_niedrig.geo.json");
-const rewesData = await d3.json("data/bundeslaender_rewes.json");
-
-// Sample data: population by state (in millions, approximate 2023 data)
-const populationData = {
-    "Schleswig-Holstein": 2.9,
-    "Hamburg": 1.9,
-    "Niedersachsen": 8.0,
-    "Bremen": 0.7,
-    "Nordrhein-Westfalen": 17.9,
-    "Hessen": 6.3,
-    "Rheinland-Pfalz": 4.1,
-    "Baden-Württemberg": 11.1,
-    "Bayern": 13.1,
-    "Saarland": 1.0,
-    "Berlin": 3.7,
-    "Brandenburg": 2.5,
-    "Mecklenburg-Vorpommern": 1.6,
-    "Sachsen": 4.1,
-    "Sachsen-Anhalt": 2.2,
-    "Thüringen": 2.1
+// Metric display configurations
+const metricConfig = {
+    population: {
+        label: "Population",
+        format: (val) => formatLegendNumber(val)
+    },
+    rewes: {
+        label: "Total REWEs",
+        format: (val) => val
+    },
+    rewes_per_10k: {
+        label: "REWEs per 10k people",
+        format: (val) => val.toFixed(2)
+    },
+    rewes_per_sq_km: {
+        label: "REWEs per km²",
+        format: (val) => val.toFixed(2)
+    },
+    pop_near: {
+        label: "Population within 1.3km",
+        format: (val) => formatLegendNumber(val)
+    },
+    percent_near: {
+        label: "% within 1.3km",
+        format: (val) => (val * 100).toFixed(1) + '%'
+    }
 };
 
-// Add population data to GeoJSON features
-geojson.features.forEach(feature => {
-    const name = feature.properties.name;
-    feature.properties.rewes = rewesData[name].rewes || 0;
-    feature.properties.rewes_per_sq_km = rewesData[name].rewes_per_sq_km || 0;
-    feature.properties.total_area_sq_km = rewesData[name].total_area_sq_km || 0;
-});
-
-const reweCounts = {};
-for (const [state, data] of Object.entries(rewesData)) {
-    reweCounts[state] = data.rewes;
-}
-
-// Create a color scale
-const colorScale = d3.scaleSequential(d3.interpolateBlues)
-    .domain([0, d3.max(Object.values(reweCounts))]);
-
-const mapContainer = document.getElementById("map-container");
-
-// Create a tooltip for this map
+// Create a shared tooltip for all maps
 const tooltip = document.createElement("div");
 tooltip.className = "custom-tooltip plot-style-tooltip";
 tooltip.style.display = "none";
 document.body.appendChild(tooltip);
 
-// Create the plot
-const map = Plot.plot({
-    projection: {
-        type: "mercator",
-        domain: geojson
-    },
-    marks: [
-        Plot.geo(geojson, {
-            fill: d => d.properties.rewes,
-            stroke: "white",
-            strokeWidth: 1,
-            channels: {
-                state: d => d.properties.name,
-                rewes: d => d.properties.rewes
-            }
-        })
-    ],
-    color: {
-        scheme: "blues",
-        domain: [0, d3.max(Object.values(reweCounts))],
-        legend: true,
-        type: "linear"
-    },
-    width: 600,
-    height: 600,
-    marginRight: 100
-});
+// Format numbers for legend (k for thousands, m for millions)
+function formatLegendNumber(value) {
+    if (value >= 1000000) {
+        return (value / 1000000).toFixed(1).replace(/\.0$/, '') + 'm';
+    } else if (value >= 1000) {
+        return (value / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+    }
+    return Math.round(value.toFixed(0));
+}
 
-// Add event listeners to each path element
-const paths = map.querySelectorAll('path[fill]');
-let currentHighlight = null;
+/**
+ * Initialize a single map instance
+ * @param {HTMLElement} container - The container element with data-source attribute
+ * @param {Object} geojson - The GeoJSON data for German Bundesländer
+ */
+async function initializeMap(container, geojson) {
+    // Get configuration from data attributes
+    const dataSource = container.getAttribute('data-source');
+    const metricsAttr = container.getAttribute('data-metrics');
+    const defaultMetric = container.getAttribute('data-default-metric') || 'rewes_per_10k';
 
-paths.forEach((path, index) => {
-    const feature = geojson.features[index];
-    
-    // path.style.cursor = 'pointer';
-    path.style.transition = 'all 0.2s ease';
-    
-    path.addEventListener('mouseenter', function(event) {
-        // Highlight the state
-        if (currentHighlight) {
-            currentHighlight.style.stroke = 'white';
-            currentHighlight.style.strokeWidth = '1';
+    if (!dataSource) {
+        console.error('Map container missing data-source attribute', container);
+        return;
+    }
+
+    // Parse available metrics (comma-separated list)
+    const availableMetrics = metricsAttr
+        ? metricsAttr.split(',').map(m => m.trim())
+        : ['rewes_per_10k', 'rewes', 'population'];
+
+    // Load the data for this map
+    const rewesData = await d3.json(dataSource);
+
+    // Clone GeoJSON to avoid sharing state between maps
+    const mapGeojson = JSON.parse(JSON.stringify(geojson));
+
+    // Add REWE data to GeoJSON features
+    mapGeojson.features.forEach(feature => {
+        const name = feature.properties.name;
+        const data = rewesData[name] || {};
+
+        // Copy all properties from the data
+        Object.keys(data).forEach(key => {
+            feature.properties[key] = data[key] || 0;
+        });
+    });
+
+    // Create map state
+    const state = {
+        currentMetric: defaultMetric,
+        currentHighlight: null,
+        currentMap: null,
+        geojson: mapGeojson
+    };
+
+    // Create wrapper for map and dropdown
+    const mapWrapper = document.createElement("div");
+    mapWrapper.className = "map-wrapper";
+    container.appendChild(mapWrapper);
+
+    // Create dropdown for metric selection
+    const dropdown = document.createElement("select");
+    dropdown.className = "metric-dropdown";
+    availableMetrics.forEach(metric => {
+        const option = document.createElement("option");
+        option.value = metric;
+        option.textContent = metricConfig[metric]?.label || metric;
+        if (metric === defaultMetric) {
+            option.selected = true;
         }
-        this.style.stroke = 'orange';
-        this.style.strokeWidth = '3';
-        currentHighlight = this;
-        
-        // Show tooltip
-        tooltip.style.display = 'block';
-        tooltip.innerHTML = `
-            <div style="font-weight: bold; margin-bottom: 5px;">
-                ${feature.properties.name}
-            </div>
-            <div style="font-size: 12px;">
-                REWEs: ${feature.properties.rewes} REWEs
-            </div>
-        `;
+        dropdown.appendChild(option);
     });
-    
-    path.addEventListener('mousemove', function(event) {
-        // Update tooltip position to follow cursor
-        tooltip.style.left = (event.pageX + 15) + 'px';
-        tooltip.style.top = (event.pageY + 15) + 'px';
-    });
-    
-    path.addEventListener('mouseleave', function() {
-        // Remove highlight
-        this.style.stroke = 'white';
-        this.style.strokeWidth = '1';
-        if (currentHighlight === this) {
-            currentHighlight = null;
+    mapWrapper.appendChild(dropdown);
+
+    // Function to create the map with a specific metric
+    function createMap(metric) {
+        // Calculate domain for the selected metric
+        const values = state.geojson.features.map(f => f.properties[metric]);
+        const maxValue = d3.max(values);
+
+        // Get the formatter for this metric
+        const metricFormatter = metricConfig[metric]?.format || formatLegendNumber;
+
+        // Create the plot
+        const map = Plot.plot({
+            projection: {
+                type: "mercator",
+                domain: state.geojson
+            },
+            marks: [
+                Plot.geo(state.geojson, {
+                    fill: d => d.properties[metric],
+                    stroke: "white",
+                    strokeWidth: 1,
+                    channels: {
+                        state: d => d.properties.name,
+                        value: d => d.properties[metric]
+                    }
+                })
+            ],
+            color: {
+                range: ["#f5ebe0", "#ce1d23"],
+                domain: [0, maxValue],
+                legend: true,
+                type: "linear",
+                tickFormat: metricFormatter
+            },
+            width: 600,
+            height: 600
+        });
+
+        // Add event listeners to each path element
+        const paths = map.querySelectorAll('path[fill]');
+
+        paths.forEach((path, index) => {
+            const feature = state.geojson.features[index];
+
+            path.style.transition = 'all 0.2s ease';
+
+            path.addEventListener('mouseenter', function(event) {
+                // Highlight the state
+                if (state.currentHighlight) {
+                    state.currentHighlight.style.stroke = 'white';
+                    state.currentHighlight.style.strokeWidth = '1';
+                }
+                this.style.stroke = 'orange';
+                this.style.strokeWidth = '3';
+                state.currentHighlight = this;
+
+                // Show tooltip
+                tooltip.style.display = 'block';
+                const config = metricConfig[state.currentMetric];
+                tooltip.innerHTML = `
+                    <div style="font-weight: bold; margin-bottom: 5px;">
+                        ${feature.properties.name}
+                    </div>
+                    <div style="font-size: 12px;">
+                        ${config.label}: ${config.format(feature.properties[state.currentMetric])}
+                    </div>
+                `;
+            });
+
+            path.addEventListener('mousemove', function(event) {
+                // Update tooltip position to follow cursor
+                tooltip.style.left = (event.pageX + 15) + 'px';
+                tooltip.style.top = (event.pageY + 15) + 'px';
+            });
+
+            path.addEventListener('mouseleave', function() {
+                // Remove highlight
+                this.style.stroke = 'white';
+                this.style.strokeWidth = '1';
+                if (state.currentHighlight === this) {
+                    state.currentHighlight = null;
+                }
+
+                // Hide tooltip
+                tooltip.style.display = 'none';
+            });
+        });
+
+        return map;
+    }
+
+    // Initial map render
+    state.currentMap = createMap(state.currentMetric);
+    mapWrapper.appendChild(state.currentMap);
+
+    // Handle dropdown change
+    dropdown.addEventListener('change', function(event) {
+        state.currentMetric = event.target.value;
+        state.currentHighlight = null;
+
+        // Remove old map
+        if (state.currentMap && state.currentMap.parentNode) {
+            state.currentMap.remove();
         }
-        
-        // Hide tooltip
-        tooltip.style.display = 'none';
+
+        // Create and add new map
+        state.currentMap = createMap(state.currentMetric);
+        mapWrapper.appendChild(state.currentMap);
     });
-});
+}
 
-// Add the plot to the page
-document.getElementById("map-container").appendChild(map);
+/**
+ * Initialize all maps on the page
+ */
+async function initializeMaps() {
+    // Load the GeoJSON data once (shared across all maps)
+    const geojson = await d3.json("data/4_niedrig.geo.json");
 
-// Create data table
-const tableData = Object.entries(rewesData)
-    .map(([name, data]) => ({
-        name,
-        rewes: data.rewes,
-        area: data.total_area_sq_km,
-        density: data.rewes_per_sq_km
-    }))
-    .sort((a, b) => b.density - a.density);
+    // Find all map containers with data-source attribute
+    const containers = document.querySelectorAll('[data-source]');
 
-const table = document.createElement('table');
-table.className = 'rewe-data-table';
+    // Initialize each map
+    for (const container of containers) {
+        await initializeMap(container, geojson);
+    }
+}
 
-// Create table header
-const thead = document.createElement('thead');
-thead.innerHTML = `
-    <tr>
-        <th>Bundesland</th>
-        <th class="number">REWEs</th>
-        <th class="number">Area (km²)</th>
-        <th class="number">REWEs/km²</th>
-    </tr>
-`;
-table.appendChild(thead);
-
-// Create table body
-const tbody = document.createElement('tbody');
-tableData.forEach(row => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-        <td>${row.name}</td>
-        <td class="number">${row.rewes.toLocaleString()}</td>
-        <td class="number">${row.area.toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
-        <td class="number">${row.density.toFixed(4)}</td>
-    `;
-    tbody.appendChild(tr);
-});
-table.appendChild(tbody);
-
-document.getElementById("table-container").appendChild(table);
+// Run initialization when the script loads
+initializeMaps();
