@@ -465,6 +465,8 @@ hr {
     display: inline-block;
     padding-right: 0.5em;
     padding-left: 0.5em;
+    padding-top: 0;
+    padding-bottom: 0;
     border-right: solid 3px var(--lightgray-500);
     border-bottom: none;
     line-height: 1;
@@ -477,6 +479,10 @@ hr {
 
   .nav-container .nav-item:first-child {
     padding-left: 0;
+  }
+
+  .nav-item a {
+    font-size: 1.25em;
   }
 
   .menu-toggle:checked::before {
