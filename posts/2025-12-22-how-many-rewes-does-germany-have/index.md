@@ -2,11 +2,11 @@
 author: Travis Hathaway
 title: "How Many REWEs Does Germany Have?"
 date: 2025-12-21
-description: In this post, I use OpenStreetMap and German Census data to answer this question and more. I use PostgreSQL and PostGIS as the primary tool to answer these questions and there will be some nice looking charts too 😍 📊 🌍.
+description: In this post, I use OpenStreetMap and German Census data to answer this question and more. I show you how I used PostgreSQL and PostGIS for the analysis plus there will be some nice looking charts too 😍 📊 🌍.
 featured_image: "/img/post_images/how-many-rewes-does-germany-have"
 featured_image_thumbnail: "/img/post_images/how-many-rewes-does-germany-have-800"
 show_featured_image: true
-tags: [gis, urban geography]
+tags: [gis, urban geography, openstreetmap, postgresql]
 layout: layouts/post_with_plots.njk
 custom_css: "posts/2025-12-22-how-many-rewes-does-germany-have/graphs.css"
 custom_js: "posts/2025-12-22-how-many-rewes-does-germany-have/graphs.js"
@@ -18,36 +18,24 @@ feature_image_credits: '
   </div>'
 ---
 
-REWE (_pronounced: RAY-veh_) is a one of the largest supermarket chains in Germany, and according to their [official website](https://www.rewe-group.com/de/unternehmen/struktur-und-vertriebslinien/rewe/), they have over 3,800 locations country-wide. But, I wouldn't be writing an entire blog post just to answer this simple question. This is a post about using OpenStreetMap and German Census data to conduct exploratory data analysis. I'll walk you through how to calculate how many REWEs are in Germany plus answer some other interesting questions along the way.
+REWE (_pronounced: RAY-veh_) is one of the largest supermarket chains in Germany, and according to their [official website](https://www.rewe-group.com/de/unternehmen/struktur-und-vertriebslinien/rewe/), they have over 3,800 locations country-wide. But, I wouldn't be writing this blog post just to answer this simple question. Instead, I show how you can derive this answer completely from volunteer contributed data via [OpenStreetMap][osm]. I also add [German Census][de-statis] data to conduct a more interesting exploratory data analysis. 
 
 ---
 
-### Background
+### Prerequisites
 
-I've previously written about [processing OpenStreetMap data](/posts/2022-04-02-processing-osm-data-with-postgresql-and-python/) and even included a [fun waste basket analysis](/posts/2022-04-02-processing-osm-data-with-postgresql-and-python/#report), but since then, things have changed and new data has become available, most notably the [2022 German Census](www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Zensus2022/_inhalt.html). For me, the most interesting part of this dataset is the [Zensus Atlas](https://atlas.zensus2022.de/) that gives detailed demographic data at a resolution of 100 meters (previously this was only offered at a 1 kilometer resolution).
+To follow along with this blog post, you need to do the following:
 
-<div class="callout callout-info">
-  I liked th Zensus Atlas dataset so much that I even wrote a CLI tool for importing it into PostgreSQL. It's called <a href="https://travishathaway.github.io/zensus2pgsql/" title="Link to zensus2pgsql project documentation">zensus2pgsql</a>. Please check it out and leave star if you find it useful 🌟.
-</div>
-
-To run all the queries I show in this post, loaded up a database with the entire Germany dataset from GeoFabrik and imported all the census data with zensus2pgsql. If you want to, follow along with this post, check out the documentaion for [PgOSM Flex](https://pgosm-flex.com) and [zensus2pgsql](https://travishathaway.github.io/zensus2pgsql) first. Loading these datasets into PostgreSQL takes about fours. 
-
-Here's a full list of the wonderful OSS projects that made this work possible:
-
-- [PostgreSQL](https://www.postgresql.org/) with [PostGIS](https://postgis.net) extension 🐘 🌏 as our data storage.
-- [PgOSM Flex](https://pgosm-flex.com/) and [zensus2pgsql](https://travishathaway.github.io/zensus2pgsql) - to import our data from various sources into PostgreSQL.
-- [GeoFabrik](https://downloads.geofabrik.de) and [OpenStreetMap](https://openstreetmap.org ) as the primary data sources (I specifically used the [Germany](https://download.geofabrik.de/europe/germany.html) dataset from 2025-12-19 for this article)
-- [Observable Plot](https://observablehq.com/plot/) as our primary visualization library.
-
-So, now that we all of the preparation out of the way, let's figure out how many REWEs Germany has and see what other questions we can answer along the way.
+1. Create local PostgreSQL database using the [PgOSM Flex][pg-osm-flex] project (requires Docker).
+2. Import German Census data into this database using [zensus2pgsql][zensus2pgsql]
 
 ---
 
 ### What exactly is a _REWE_?
 
-This may sound like an obvious question, but it actually isn't. To me a REWE is a store offering a full selection of fruit, produce, baked goods and the rest of the essentials that one would expect to find in a full service supermarket. REWE complicates this assumption though because not all of their stores fit this description. For example, some may simply be drink markets while other are "express" convenience stores attached to gas stations.
+This may sound like an obvious question, but it actually isn't. REWEs in Germany actually come in several shapes and sizes. Some are traditional full service supermarkets while are simply express stores and drink markets. For this post, I focus on just the full service supermarkets because the more likely what most people in Germany think of when they think of REWE.
 
-Now, we take the assumption above and translate it to an SQL query that can find all the REWE stores in Germany. Here's what I came up with:
+With this assumption in mind, let's write a SQL query that can count all the REWE stores in Germany. Here's what I came up with:
 
 ```sql
 WITH rewes AS (
@@ -77,25 +65,24 @@ SELECT COUNT(*) FROM rewes;
 | 3,750       |
 
 
-Nice, this value lines up well with the value I got from the source I linked to earlier, so it looks like I did a pretty good job with the query. I went back and forth a couple times to get it right though, so I encourage you to always inspect the rows you get back to make sure everything looks correct. If notice anything wrong with the data (like typos), I encourage you to fix these yourself by logging into [openstreetmap.org](https://openstreetmap.org).
+This value lines up well with the value I got from the source I linked to earlier, so it looks like I did a pretty good job with the query. I went back and forth a couple times to get it right though, so I encourage you to always inspect the rows you get back to make sure everything looks correct (i.e. instead of `COUNT(*)` return `DISTINCT name` to inspect individual names of stores). If you notice anything wrong with the data (like typos), I encourage you to fix these yourself on [openstreetmap.org](https://openstreetmap.org).
 
 
 ### Which Bundesland has the most?
 
-To make this a little more interesting, let's now figure out which Bundesland has the most REWEs. To make sure Bundeslands with higher populations aren't given a fair advantage, we use a per capita measurement.
+To make this more interesting, let's figure out which Bundesland has the most REWEs. To make sure Bundeslands with higher populations aren't given a fair advantage, we use a per-capita measurement (REWEs per 10k inhabitants) for our comparison.
 
-Here's a query that uses both our OpenStreetMap and census data sets to calculate the desired statstics:
+Here's a query that uses both our OpenStreetMap and census data to calculate per-capita REWEs:
 
 ```sql
 WITH rewes AS(
   -- snip, snip ✂️ (same as example from above)
-)
-states AS (
+), states AS (
 	SELECT 
 		name,
 		geom
 	FROM
-		osm.place_polygon_nested -- Adminstrative boundaries
+		osm.place_polygon_nested -- Administrative boundaries
 	WHERE 
 		nest_level = 2 AND admin_level <=4
 ), state_pop AS (
@@ -138,19 +125,20 @@ Now we can take this data and visualize it on a map:
 	<div data-source="data/rewe-data.json" class="map"></div>
 </div>
 
-We can see that **Sachsen-Anhalt** is the clear winner here followed closely by **Sachsen**. It might be interesting to why the number of REWEs is so high there, but that's a subject for a different blog post.
+**Sachsen-Anhalt** is the clear winner here followed closely by **Sachsen**. It might be interesting to see why the number of REWEs is so high there, but that's a subject for a different blog post.
 
 ### Which Bundesland has the most accessible REWEs?
 
-The final question we'll ask has to do with accessibility, and by this I mean how easily these REWEs can be reached. But, how exactly should we measure this? One way to do this is by using the [15-minute city urban planning concept][15-minute-city] that states most amenities in a city are ideally reachable within 15 minutes by walking, biking or public transit. So, with this in mind let's see how many people in Germany live witin 1.3km (about 15 minutes of walking) of a REWE.
+The final question deals with accessibility, and by this, I mean how easily these REWEs can be reached. But, how exactly should this be measured? One way is by using the [15-minute city urban planning concept][15-minute-city] that states most amenities in a city are ideally reachable within 15 minutes by walking, biking or public transit. So, with this in mind let's see how many people in Germany live within 1.3km (about 15 minutes of walking) of a REWE.
 
-To do this, we'll use the `ST_Buffer` function in PostGIS to draw a 1.3km buffer around all the the REWEs in Germany and then see how many people live within this buffer. We'll also split this up by Bundesland to again compare each other by the percentage of the population living within 1.3km of a REWE:
+To do this, I use the `ST_Buffer` function in PostGIS to draw a 1.3km buffer around all the the REWEs in Germany and then see how many people live within this buffer. I also split this up by Bundesland to again compare each other by the percentage of the population living within 1.3km of a REWE:
 
 ```sql
 WITH rewes AS (
   -- snip, snip ✂️ (same as example from above)
-),
-state_pop AS (
+), states AS (
+  -- snip, snip ✂️ (same as example from above)
+), state_pop AS (
   -- snip, snip ✂️ (same as example from above)
 ),
 rewe_buffer AS (
@@ -197,10 +185,15 @@ With this data we can create the following map:
 
 Upon seeing this, one thing that immediately stuck out to me was how high the percentages are for Bremen, Hamburg and Berlin at 63.9%, 72.3% and 78.3%, respectively. All three of these Bundeslands are highly urban and that's mostly likely why a very high percentage their population live so close to REWEs.
 
-Another thing I found interesting was that even though Sachsen-Anhalt has the highest per-captia of REWEs in Germany, it has the lowest accessibility of REWEs. This could be intersting to research further because I'm not sure why this is the case, but if I were to do so, I would first divide the Bundesland up into two categories: rural and urban. I have a feeling that the urban areas probably enjoy a similar accessibility to other cities in Germany and that their rural population is living further away from their REWEs.
+Another thing I found interesting was that even though Sachsen-Anhalt has the highest per-capita of REWEs in Germany, it has the lowest accessibility of REWEs. My hunch here tells me that this Bundesland has a higher rural versus urban population and that people who live in rural areas live further away on average to supermarkets like REWE.
 
 ## Conclusion
 
+With this post, I wanted to give you all some inspiration for what types of data analysis are possible by combining OpenStreetMap and the German Census. There are many more areas you can investigate, and in the coming months I plan on doing just that. My goal in the coming year will be to write at least one more essay that I can add to my [essay series][essays]. Like those essays, this essay will situate itself within ongoing research in Urban Studies and Urban Geography, so stay tuned!
 
-
+[de-statis]: https://www.destatis.de/DE/Home/_inhalt.html
+[osm]: https://openstreetmap.org
 [15-minute-city]: https://www.nature.com/articles/s41599-022-01145-0
+[pg-osm-flex]: https://pgosm-flex.com/
+[zensus2pgsql]: https://travishathaway.github.io/zensus2pgsql
+[essays]: /tags/essays/

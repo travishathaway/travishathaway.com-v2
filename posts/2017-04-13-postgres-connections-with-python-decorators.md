@@ -7,7 +7,7 @@ description: Learn how to use decorators in Python by walking through a practica
 featured_image: "/img/post_images/floral-pattern-background-171"
 featured_image_thumbnail: "/img/post_images/floral-pattern-background-171_small"
 show_featured_image: true
-tags: [python, database, software]
+tags: [python, database, postgresql, software]
 layout: layouts/post.njk
 ---
 
