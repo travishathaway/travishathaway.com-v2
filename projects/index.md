@@ -14,7 +14,7 @@ Below are a list of the talks I have given and links to the resource material an
 ## EuroPython 2025
 
 **Title:** Let's talk: communication and consensus building in open-source
-**Video:** *coming soon!*
+**Video:** [YouTube](https://www.youtube.com/watch?v=O8gqtYFuYyQ)
 **Resources:** [slides](https://euro2025.thath.net/)
 
 ## PyCon Germany 2023
