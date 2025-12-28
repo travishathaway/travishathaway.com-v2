@@ -521,6 +521,25 @@ hr {
   border: 0;
 }
 
+/* Mobile typography optimization */
+@media (max-width: 767px) {
+  p, li {
+    font-size: 1.125rem; /* 18px on mobile - more comfortable for small screens */
+  }
+
+  h1 {
+    font-size: 1.75em; /* Smaller on mobile */
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.25em;
+  }
+}
+
 /* Posts list */
 .postlist {
   list-style: none;
