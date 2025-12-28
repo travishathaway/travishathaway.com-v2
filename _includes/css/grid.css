@@ -8,11 +8,12 @@ body {
     ". footer .";
 }
 
-header { 
+header {
   display: grid;
   grid-column: header;
-  grid-template-columns: 8.5em minmax(600, 850px);
+  grid-template-columns: 8.5em 1fr;
   grid-template-areas: "header1 header2";
+  align-items: center;
 }
 main { grid-area: main; }
 aside { grid-area: sidebar; }
@@ -44,8 +45,26 @@ pre {
   border-radius: 5px;
 }
 
+.header-logo-container {
+  display: grid;
+  grid-template-columns: 60px auto;
+  grid-template-areas: "logo text";
+  align-items: center;
+}
+
+.site-logo {
+  grid-area: logo;
+}
+
 .site-logo-text {
-  display: none;
+  display: block;
+  font-size: 1em;
+  grid-area: text;
+  padding: 0 0.5em;
+  color: var(--darkgray);
+  font-weight: bold;
+  line-height: 1.15;
+  margin-left: 10px;
 }
 
 /** Rules for big screens **/
@@ -87,6 +106,7 @@ pre {
     color: var(--darkgray);
     font-weight: bold;
     line-height: 1.15;
+    margin-left: 0;
   }
 
   header .site-logo {
