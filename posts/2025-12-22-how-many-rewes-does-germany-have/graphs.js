@@ -31,7 +31,7 @@ const legendFormatter = {
         format: (val) => (val * 100).toFixed(0) + '%'
     },
     rewes_per_10k: {
-        format: (val) => Math.round(val),
+        format: (val) => val.toFixed(1)
     }
 }
 

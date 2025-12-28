@@ -29,6 +29,8 @@
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
   </head>
   <body>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-hidden="true">
+
     <header>
       <div class="header-logo">
         <a href="{{ '/' | url }}" alt="main site">
@@ -47,12 +49,24 @@
         </a>
       </div>
 
-      {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-      <ul class="nav">
-      {%- for entry in collections.all | eleventyNavigation %}
-        <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}"><a href="{{ entry.url | url }}">{{ entry.title }}</a></li>
-      {%- endfor %}
-      </ul>
+      {#- Hamburger button (mobile only) #}
+      <label for="menu-toggle" class="hamburger-button" aria-label="Toggle navigation menu">
+        <span class="hamburger-icon"></span>
+      </label>
+
+      {#- Navigation with mobile overlay #}
+      <nav class="nav-container">
+        {#- Close button (mobile only) #}
+        <label for="menu-toggle" class="nav-close" aria-label="Close navigation menu">
+        </label>
+
+        {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+        <ul class="nav">
+        {%- for entry in collections.all | eleventyNavigation %}
+          <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}"><a href="{{ entry.url | url }}">{{ entry.title }}</a></li>
+        {%- endfor %}
+        </ul>
+      </nav>
     </header>
 
     <aside>

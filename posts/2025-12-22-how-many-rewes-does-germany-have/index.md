@@ -124,7 +124,7 @@ GROUP BY
 Now we can take this data and visualize it on a map:
 
 <div class="map-container">
-	<h4 style="margin: 5px">Statistics about REWEs in Germany</h4>
+	<h4 class="graph-title">Statistics about REWEs in Germany</h4>
 	<div data-source="data/rewe-data.json" class="map"></div>
 </div>
 
@@ -177,7 +177,7 @@ GROUP BY s.name, s.population;
 With this data we can create the following map:
 
 <div class="map-container">
-  <h4 style="margin: 5px">REWE accessibility in Germany</h4>
+  <h4 class="graph-title">REWE accessibility in Germany</h4>
   <div 
     data-source="data/rewe-accessibility.json" 
     data-metrics="percent_near,pop_near"

@@ -79,6 +79,19 @@
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
+/* Mobile: Move dropdown to top-left to avoid legend overlap */
+@media (max-width: 768px) {
+    .graph-title {
+        margin: 5px;
+        margin-bottom: 50px;
+    }
+    .metric-dropdown {
+        left: 17.5%;
+        right: auto;
+        top: -40px;
+    }
+}
+
 /* Legend styling - larger text */
 #map-container svg text {
     font-size: 16px;
