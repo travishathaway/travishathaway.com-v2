@@ -18,7 +18,7 @@ feature_image_credits: '
   </div>'
 ---
 
-REWE (_pronounced: RAY-veh_) is one of the largest supermarket chains in Germany, and according to their [official website](https://www.rewe-group.com/de/unternehmen/struktur-und-vertriebslinien/rewe/), they have over 3,800 locations country-wide. But, I wouldn't be writing this blog post just to answer this simple question. Instead, I show how you can derive this answer completely from volunteer contributed data via [OpenStreetMap][osm]. I also add [German Census][de-statis] data to conduct a more interesting exploratory data analysis. 
+REWE (_pronounced: RAY-veh_) is one of the largest supermarket chains in Germany, and according to their [official website](https://www.rewe-group.com/de/unternehmen/struktur-und-vertriebslinien/rewe/), they have over 3,800 locations country-wide. But, I wouldn't be writing this blog post just to answer this simple question. Instead, I am going to show how you can derive this answer completely from volunteer contributed data via [OpenStreetMap][osm]. To make this more interesting, I bring in [German Census][de-statis] and see what other questions I can answer.
 
 ---
 
@@ -27,15 +27,19 @@ REWE (_pronounced: RAY-veh_) is one of the largest supermarket chains in Germany
 To follow along with this blog post, you need to do the following:
 
 1. Create local PostgreSQL database using the [PgOSM Flex][pg-osm-flex] project (requires Docker).
-2. Import German Census data into this database using [zensus2pgsql][zensus2pgsql]
+2. Import German Census data into this database using [zensus2pgsql][zensus2pgsql].
+
+<div class="callout callout-info">
+  <strong>Good to know:</strong> "zensus2pgsql" is a tool I wrote myself and is still early in development. If you have any feedback for me about this tool, please create an issue on the <a href="https://github.com/travishathaway/zensus2pgsql">GitHub project</a>
+</div>
 
 ---
 
 ### What exactly is a _REWE_?
 
-This may sound like an obvious question, but it actually isn't. REWEs in Germany actually come in several shapes and sizes. Some are traditional full service supermarkets while are simply express stores and drink markets. For this post, I focus on just the full service supermarkets because the more likely what most people in Germany think of when they think of REWE.
+This may sound like an obvious question, but it actually isn't. REWEs in Germany come in several shapes and sizes. Some are traditional full service supermarkets while others are simply express stores and drink markets. For this post, I focus on just the full service supermarkets because they're more likely what most people in Germany think of when they think of REWE.
 
-With this assumption in mind, let's write a SQL query that can count all the REWE stores in Germany. Here's what I came up with:
+With this assumption in mind, let's write a SQL query that can count all the REWE stores in Germany:
 
 ```sql
 WITH rewes AS (
@@ -65,12 +69,12 @@ SELECT COUNT(*) FROM rewes;
 | 3,750       |
 
 
-This value lines up well with the value I got from the source I linked to earlier, so it looks like I did a pretty good job with the query. I went back and forth a couple times to get it right though, so I encourage you to always inspect the rows you get back to make sure everything looks correct (i.e. instead of `COUNT(*)` return `DISTINCT name` to inspect individual names of stores). If you notice anything wrong with the data (like typos), I encourage you to fix these yourself on [openstreetmap.org](https://openstreetmap.org).
+This value lines up well with the value I got from the source I linked to earlier, so it looks like I did a pretty good job. I went back and forth a couple times to get it right though, so I encourage you to always inspect the rows you get back to make sure everything looks correct (i.e. instead of `COUNT(*)` return `DISTINCT name` to inspect individual names of stores). If you notice anything wrong with the data (like typos), I encourage you to fix these yourself on [openstreetmap.org](https://openstreetmap.org).
 
 
-### Which Bundesland has the most?
+### Which federal state has the most?
 
-To make this more interesting, let's figure out which Bundesland has the most REWEs. To make sure Bundeslands with higher populations aren't given a fair advantage, we use a per-capita measurement (REWEs per 10k inhabitants) for our comparison.
+To make this more interesting, let's figure out which federal state has the most REWEs.  To make sure states with higher populations don't have an unfair advantage, we use a per-capita measurement (REWEs per 10k inhabitants) for our comparison.
 
 Here's a query that uses both our OpenStreetMap and census data to calculate per-capita REWEs:
 
@@ -102,8 +106,7 @@ SELECT
 	s.name,
 	COUNT(*) AS rewes,
 	p.population,
-	(p.population / 10000.0) / COUNT(*) as rewes_per_10k
-
+	COUNT(*) / (p.population / 10000.0) as rewes_per_10k
 FROM
 	states s
 JOIN
@@ -125,13 +128,13 @@ Now we can take this data and visualize it on a map:
 	<div data-source="data/rewe-data.json" class="map"></div>
 </div>
 
-**Sachsen-Anhalt** is the clear winner here followed closely by **Sachsen**. It might be interesting to see why the number of REWEs is so high there, but that's a subject for a different blog post.
+**Hessen** is the clear winner and can be declared the REWE capital of Germany at about `0.74` REWEs per 10k inhabitants with **Sachsen-Anhalt** coming in last at `0.25`. A further analysis might focus on all supermarket chains and what the market share looks like for each state.
 
-### Which Bundesland has the most accessible REWEs?
+### Which federal state has the most accessible REWEs?
 
 The final question deals with accessibility, and by this, I mean how easily these REWEs can be reached. But, how exactly should this be measured? One way is by using the [15-minute city urban planning concept][15-minute-city] that states most amenities in a city are ideally reachable within 15 minutes by walking, biking or public transit. So, with this in mind let's see how many people in Germany live within 1.3km (about 15 minutes of walking) of a REWE.
 
-To do this, I use the `ST_Buffer` function in PostGIS to draw a 1.3km buffer around all the the REWEs in Germany and then see how many people live within this buffer. I also split this up by Bundesland to again compare each other by the percentage of the population living within 1.3km of a REWE:
+To do this, I use the `ST_Buffer` function in PostGIS to draw a 1.3km buffer around all the the REWEs in Germany and then see how many people live within this buffer. I also split this up by state to compare them by the percentage of the population living within 1.3km of a REWE:
 
 ```sql
 WITH rewes AS (
@@ -183,9 +186,7 @@ With this data we can create the following map:
   </div>
 </div>
 
-Upon seeing this, one thing that immediately stuck out to me was how high the percentages are for Bremen, Hamburg and Berlin at 63.9%, 72.3% and 78.3%, respectively. All three of these Bundeslands are highly urban and that's mostly likely why a very high percentage their population live so close to REWEs.
-
-Another thing I found interesting was that even though Sachsen-Anhalt has the highest per-capita of REWEs in Germany, it has the lowest accessibility of REWEs. My hunch here tells me that this Bundesland has a higher rural versus urban population and that people who live in rural areas live further away on average to supermarkets like REWE.
+Upon seeing this, one thing that immediately stood out to me was how high the percentages are for **Bremen**, **Hamburg** and **Berlin** at **63.9%**, **72.3%** and **78.3%**, respectively. All three of these states are highly urban and that's most likely why a very high percentage of their population lives so close to REWEs. For further analysis, I would split up Germany into rural and urban zones to more fairly compare areas with each other and look for interesting discrepancies between them and find out why they exist.
 
 ## Conclusion
 
