@@ -6,11 +6,14 @@ const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const CleanCSS = require("clean-css");
+const { minify } = require("terser");
 
 module.exports = function(eleventyConfig) {
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginSyntaxHighlight);
+  eleventyConfig.addPlugin(pluginSyntaxHighlight, {
+    lineSeparator: "\n"
+  });
   eleventyConfig.addPlugin(pluginNavigation);
 
   // https://www.11ty.dev/docs/data-deep-merge/
@@ -51,6 +54,22 @@ module.exports = function(eleventyConfig) {
     return new CleanCSS({}).minify(code).styles;
   });
 
+  eleventyConfig.addFilter("jsmin", async function (code) {
+		try {
+			const minified = await minify(code);
+			return minified.code;
+		} catch (err) {
+			console.error("Terser error: ", err);
+			// Fail gracefully.
+			return code;
+		}
+	});
+
+  // Plotly shortcode for loading charts from JSON data files
+  eleventyConfig.addShortcode("plotly", function(dataPath, divId = 'plotly-chart', height = '500px') {
+    return `<div id="${divId}" style="width:100%;height:${height};"></div><script>(function() {var div = document.getElementById('${divId}');fetch('${dataPath}').then(response => {if (!response.ok) throw new Error('Failed to load chart data from ${dataPath}');return response.json();}).then(data => {Plotly.newPlot('${divId}', data.data, data.layout, data.config || {responsive: true});}).catch(error => {div.innerHTML = '<p style="color:red;padding:1em;border:1px solid red;">Error loading chart: ' + error.message + '</p>';console.error('Plotly chart error:', error);});})();</script>`;
+  });
+
   // Create an array of all tags
   eleventyConfig.addCollection("tagList", function(collection) {
     let tagSet = new Set();
@@ -64,11 +83,20 @@ module.exports = function(eleventyConfig) {
   // Copy the `img` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/plotly.js/dist/plotly.min.js": "js/plotly.min.js"
+  });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/d3/dist/d3.min.js": "js/d3.min.js"
+  });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/@observablehq/plot/dist/plot.umd.min.js": "js/plot.min.js"
+  });
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
     html: true,
-    breaks: true,
+    breaks: false,
     linkify: true
   }).use(markdownItAnchor, {
     permalink: true,

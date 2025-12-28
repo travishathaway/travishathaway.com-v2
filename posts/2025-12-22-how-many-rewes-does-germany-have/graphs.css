@@ -1,0 +1,92 @@
+/* Custom tooltip styles */
+.custom-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    pointer-events: none;
+    font-size: 13px;
+    line-height: 1.5;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    z-index: 1000;
+    max-width: 200px;
+}
+
+.custom-tooltip strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.plot-style-tooltip {
+    background: white;
+    color: #333;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Map and table layout */
+.map-container {
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #272822;
+    color: white;
+    padding-top: 10px;
+    border-radius: 10px;
+    border: solid 10px #ddd;
+}
+
+.map > figure {
+    margin: 10px;
+}
+
+.map svg text {
+    font-size: 14px;
+}
+
+/* Map wrapper for positioning dropdown */
+.map-wrapper {
+    position: relative;
+}
+
+/* Metric dropdown styling */
+.metric-dropdown {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.metric-dropdown:hover {
+    border-color: #999;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.metric-dropdown:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* Legend styling - larger text */
+#map-container svg text {
+    font-size: 16px;
+}
+
+/* Responsive layout */
+@media (max-width: 1024px) {
+    #map-container {
+        flex-direction: column;
+    }
+}
