@@ -11,31 +11,37 @@ eleventyNavigation:
 
 Below are a list of the talks I have given and links to the resource material and videos.
 
-## EuroPython 2025
+<h2 class="muted">EuroPython 2025</h2>
 
-**Title:** Let's talk: communication and consensus building in open-source
+### Let's talk: Communication and Consensus Building in Open-Source
 
-**Video:** [YouTube](https://www.youtube.com/watch?v=O8gqtYFuYyQ)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/O8gqtYFuYyQ?si=-ThpdTSNC-Roj275" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-**Resources:** [slides](https://euro2025.thath.net/)
+#### Resources
 
-## PyCon Germany 2023
+- [Slides](https://euro2025.thath.net/)
 
-**Title:** Writing Plugin Friendly Python Applications
+---
 
-**Video:** [YouTube](https://www.youtube.com/watch?v=d40tBcqopAI)
+<h2 class="muted">PyConDE & PyData Berlin 2023</h2>
 
-**Resources:** [slides](https://docs.google.com/presentation/d/10uIV4mDGr9rgLsddDA2yIKZJGTE-1gclIEY5QmTB3iY/edit), [GitHub repository](https://github.com/travishathaway/latz)
+#### Writing Plugin Friendly Python Applications
 
-## PyCon Germany 2022
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d40tBcqopAI?si=CE7O_Vtbx4XykOUk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-**Title:** Processing Open Street Map Data with Python and PostgreSQL
+#### Resources
 
-**Video:** [YouTube](https://www.youtube.com/watch?v=z9_prnssu0w)
+- [Slides](https://docs.google.com/presentation/d/10uIV4mDGr9rgLsddDA2yIKZJGTE-1gclIEY5QmTB3iY/edit)
+- [GitHub repository](https://github.com/travishathaway/latz)
 
-**Resources:** [slides](https://docs.google.com/presentation/d/1nFQr_NUr-QmG0n-wusnctjnAl8YUKmMuz3PhU_FoTYo/edit), [GitHub repository](https://github.com/travishathaway/osmprj)
+---
 
+<h2 class="muted">PyCon Germany 2022</h2>
 
-<div class="callout callout-info">
-    <b>Check it out!</b> I wrote companion blog post for this talk you can <a href="/posts/2022-04-02-processing-osm-data-with-postgresql-and-python/" title="companion blog post">read here</a> 🔍
-</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/z9_prnssu0w?si=Qdznxxehkf9zb9jA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+#### Resources
+
+- [Blog post: Processing OSM Data with PostgreSQL and Python](/posts/2022-04-02-processing-osm-data-with-postgresql-and-python/)
+- [Slides](https://docs.google.com/presentation/d/1nFQr_NUr-QmG0n-wusnctjnAl8YUKmMuz3PhU_FoTYo/edit)
+- [GitHub repository](https://github.com/travishathaway/osmprj)
