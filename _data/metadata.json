@@ -1,21 +1,21 @@
 {
-  "title": "Travis Hathaway",
-  "url": "https://travishathaway.com/",
+  "title": "Travis Hathaway's Blog",
+  "url": "https://blog.thath.net",
   "language": "en",
   "description": "A blog with random splatterings of things I am interested in",
   "feed": {
     "subtitle": "A blog with random splatterings of things I am interested in",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
-    "id": "https://travishathaway.com/"
+    "id": "https://blog.thath.net/"
   },
   "jsonfeed": {
     "path": "/feed/feed.json",
-    "url": "https://travishathaway.com/feed/feed.json"
+    "url": "https://blog.thath.net/feed/feed.json"
   },
   "author": {
     "name": "Travis Hathaway",
     "email": "thathaway@travishathaway.com",
-    "url": "https://example.com/about-me/"
+    "url": "https://blog.thath.net/"
   }
 }

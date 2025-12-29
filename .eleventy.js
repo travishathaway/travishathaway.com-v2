@@ -7,6 +7,7 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const CleanCSS = require("clean-css");
 const { minify } = require("terser");
+const { HtmlBasePlugin } = require("@11ty/eleventy");
 
 module.exports = function(eleventyConfig) {
   // Add plugins
@@ -15,6 +16,7 @@ module.exports = function(eleventyConfig) {
     lineSeparator: "\n"
   });
   eleventyConfig.addPlugin(pluginNavigation);
+  eleventyConfig.addPlugin(HtmlBasePlugin);
 
   // https://www.11ty.dev/docs/data-deep-merge/
   eleventyConfig.setDataDeepMerge(true);

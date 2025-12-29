@@ -4,7 +4,7 @@ title: "How Many REWEs Does Germany Have?"
 date: 2025-12-21
 description: In this post, I use OpenStreetMap and German Census data to answer this question and more. I show you how I used PostgreSQL and PostGIS for the analysis plus there will be some nice looking charts too 😍 📊 🌍.
 featured_image: "/img/post_images/how-many-rewes-does-germany-have"
-featured_image_thumbnail: "/img/post_images/how-many-rewes-does-germany-have-800"
+featured_image_thumbnail: "/img/post_images/how-many-rewes-does-germany-have_800"
 show_featured_image: true
 tags: [gis, urban geography, openstreetmap, postgresql]
 layout: layouts/post_with_plots.njk
