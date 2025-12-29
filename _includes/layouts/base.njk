@@ -16,8 +16,8 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="{{ metadata.url }}{{ page.url | url }}">
     <meta property="og:image" content="{{ metadata.url or '' }}{{ featured_image_thumbnail}}.jpg">
-    <meta property="article:author" content="Travis Hathaway" />
-    <meta property="article:published_time" content="{{ date }}" />
+    <meta property="article:author" content="{{ metadata.author.name }}" />
+    <meta property="article:published_time" content="{{ date.toISOString() }}" />
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ title or metadata.title }}">
     <meta name="twitter:description" content="{{ description or metadata.description }}">
