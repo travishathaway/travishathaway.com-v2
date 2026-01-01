@@ -38,16 +38,93 @@ and a link to the final product:
 
 ## Getting the data
 
-_TBD_
+The first thing I did was scrape the official ADE website to get the schedule and and save it as a JSON file I could use later for my own app. This was relatively easy because of an endpoint I found on the website that returns JSON data. The following Python snippet shows how to use it:
+
+```python
+import httpx
+
+resp = httpx.get(
+    "https://www.amsterdam-dance-event.nl/api/program/filter/",
+    params={
+        "from": "2025-10-22",
+        "to": "2025-10-23",
+        "section": "events",
+        "type": "8262,8263"
+    }
+)
+```
+
+The JSON returned looks like this:
+
+```json
+{
+  "data": [
+    {
+      "id": 1111111,
+      "handle": "events",
+      "title": "Event title",
+      "subtitle": "Event subtitle",
+      "start_date_time": {
+        "date": "2025-10-22 00:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "Europe/Amsterdam"
+      },
+      "show_start_date_time": true,
+      "end_date_time": {
+        "date": "2025-10-22 23:59:00.000000",
+        "timezone_type": 3,
+        "timezone": "Europe/Amsterdam"
+      },
+      "show_end_date_time": true,
+      "url": "https://www.amsterdam-dance-event.nl/en/program/2025/event-title/11111111/",
+      "venue": {
+        "title": "Venue name"
+      },
+      "soldOut": false,
+      "categories": "Daytime events / Exhibitions / Outdoor / Free Events"
+    },
+    ...
+  ]
+}
+```
+
+Already lots of useful information there including title and event categories, but there was on crucial thing missing for creating application: location data. Initially, I tried taking the venue title and using the [Nominatim API][nominatim] to find the location. This worked well for many venues, but for others there were errors, so I wanted to find a new method that had a higher accuracy rate.
+
+On the events pages themselves, there's an address for the event venue, so I wrote a second fetch routine that retrieves the page and plucks out the address. After getting the address, I used [Google's Places API][google-places] to get a lat/long point pair from an address. I used this API because I found it to more accurate Nominamtim and I was well within the rate limits of free usage. To be extra certain that I didn't run over te rate limit usage, I implemented a caching mechanism in my Python script.
+
+The final step was putting this data into a GeoJSON file that my mapping application could use. All of this functionality was wrapped up into a CLI program called `ade` with a `collect` command for collecting event information and writing the GeoJSON and a `clean` command for clearing the program's cache.
 
 ## Building the map
 
-_TBD_
+With the data in hand, it was now time to write a simple mapping application that display it. I had the following requirements in mind:
+
+- Filter events by category, date and start time
+- Save events that I want to go see
+- See my current position on the map itself
+
+The app itself was just a map similar to Google Maps with a sidebar that you could expand to enable all the filters. Here's a couple screen shots of the interface:
+
+![Screenshot 1](/img/posts/2025-11-12-better-maps-for-better-dancing/screenshot-1.png)
+
+I used point clustering to better display densely packed points. This was actually a big improvement over the official event map that didn't use point clustering, making it difficult to read.
+
+![Screenshot 2](/img/posts/2025-11-12-better-maps-for-better-dancing/screenshot-2.png)
+
+I used [Svelte][svelte] to build the website to get some experience with a new Javascript framework, and my impressions were good! I would definitely like to use it for another project in the future.
+
+This part of the project is where I also used Claude Code considerably. I used it as a tool to help me learn how to use Svelte and also used it to get some ideas about what the user interface should look like. It was very helpful when it came to quicky building different layouts for the app. Claude made a couple mistakes that I had to correct myself, but all-in-all it was a nice tool to have, and I have definitely been using it more since this projcet.
 
 ## Actually using it
 
-_TBD_
+So, did this thing actually work? and was it useful? Yes, it was! My favorite thing about the app was the fact that I could zoom to my current location on the map. This ended up being really useful for when I wanted to find an event near me. The other really useful thing was being able to filter by category. One the categories was, "free events", so that ended up by handy for finding cheap events to go to.
+
+The othe useful thing was being able to filter by start time. Adjusting this filter proved handy as the night progressed, and I was looking for other events to go to. The favorites feature was nice, but I didn't use it as much as I thought I was going to.
+
+This was the first hobby project that I completed in a while, and I had a lot of fun creating and using it. I'm already looking forward to the next excuse to write some more "homemade" software.
 
 
 [ade-mapper-github]: https://github.com/travishathaway/ade-mapper
 [ade-mapper]: https://ade.thath.net/
+[nominatim]: https://nominatim.org/
+[google-places]: https://developers.google.com/maps/documentation#places-documentation
+[svelte]: https://svelte.dev
