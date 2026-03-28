@@ -6,7 +6,7 @@ description: "Getting started with OpenStreetMap data can be an intimidating pro
 featured_image: "/img/post_images/europe_karte"
 featured_image_thumbnail: "/img/post_images/europe_karte_small"
 show_featured_image: true
-tags: [python, postgresql, openstreetmap]
+tags: [python, postgresql, openstreetmap, gis]
 layout: layouts/post.njk
 feature_image_credits: ''
 ---
