@@ -1,6 +1,6 @@
 ---
 author: Travis Hathaway
-title: "FOSSGIS 2026 Göttingen"
+title: "Reflections on FOSSGIS 2026 Göttingen"
 date: 2026-03-29
 description: Göttingen was a lot of fun and a whirlwind of exciting new developments in Free and Open-Source Software (FOSS) related to Geographic Information Systems (GIS). Learn about everything I saw there plus the presentations I still want to view once published online.
 featured_image: "/img/post_images/fossgis-2026"
@@ -16,7 +16,7 @@ feature_image_credits: '
   </div>'
 ---
 
-This was my first time at FOSSGIS and also my first time attending a conference entirely in German 🇩🇪. Having lived in Germany for over six years now, it was great to finally experience a conference in the native tongue of my chosen country of residence 🥲. To keep the post organized, I'll give my take on a few of my favorite talks from each day. I'll also mention the talks I didn't see that day that I want to watch later online. I wasn't able to attend the first day, so this post begins on Thursday (March 26th).
+This was my first time at [FOSSGIS](https://www.fossgis-konferenz.de) and also my first time attending a conference entirely in German 🇩🇪. Having lived in Germany for over six years now, it was great to finally experience a conference in the native tongue of my chosen country of residence 🥲. To keep the post organized, I'll give my take on a few of my favorite talks from each day. I'll also mention the talks I didn't see that day that I want to watch later online. I wasn't able to attend the first day, so this post begins on Thursday (March 26th).
 
 Overall, the conference was an amazing experience. I felt like each talk I saw had something unique to offer and because this was my first GIS-themed talk, everything felt new and fresh.
 
@@ -36,6 +36,8 @@ This was a demo hosted by one of the maintainers of the [Nominatim API](https://
 
 I thought this was very informative and might be a really useful method for me to replicate for my own online maps. Rather than relying on a paid geocoding service, I could use something like this instead.
 
+#### Links
+
 - [Slides](https://pretalx.com/media/fossgis2026/submissions/QFS9HF/resources/geocoding_mass_25htsgQ.pdf)
 
 ### Open-Source-Tools und Citizen Science für urbane Mobilitätsdaten
@@ -53,6 +55,8 @@ I was extremely impressed by all the moving pieces in this talk! By far, the coo
   </span>
 </div>
 
+#### Links
+
 - [Slides](https://docs.google.com/presentation/d/1e-bdI6p5GfmJF8yKRnCrZ1HDBcvjP9yQWla75i2CAvM/edit?usp=sharing)
 
 ### Aufbau und Aktualisierung einer OSM-basierten Karten mit osm2pgsql
@@ -62,6 +66,8 @@ I was extremely impressed by all the moving pieces in this talk! By far, the coo
 I found this talk very interesting because I've spent a considerable amount of time using osm2pgsql and am currently trying to [publish it on conda-forge](https://github.com/conda-forge/staged-recipes/pull/31749). I've also presented on this in the past, and some of the methods used were very similar to what I showed in [my own PyCon DE 22 talk](/posts/2022-04-02-processing-osm-data-with-postgresql-and-python), but the presenter went even further by demoing a custom QGIS plugin he wrote in order to reconcile differences in the data that has changed. Very impressive!
 
 I'll be keeping an eye on his work and also keeping a close eye on osm2pgsql developments, especially the [Themepark](https://osm2pgsql.org/themepark) beta feature.
+
+#### Links
 
 - [Slides](https://pretalx.com/media/fossgis2026/submissions/YWPLQE/resources/fossgis_osm2pg_681ThIk.pdf)
 
@@ -86,6 +92,8 @@ The methods that I learned in this talk are going to be directly applied to my u
   </span>
 </div>
 
+#### Links
+
 - [MapLibre Community Page](https://maplibre.org/community/#0.66/17.4/4.4)
 
 ### OpenStreetMap-Daten als Grundlage für Routing – wie gut funktioniert das wirklich?
@@ -95,6 +103,8 @@ The methods that I learned in this talk are going to be directly applied to my u
 A project directly from [HeiGIT](https://heigit.org/). For those that don't know, they are a research institution founded initially out of the University of Heidelberg and have delivered amazing projects like OpenRoutingService in the past. This talk focused on the reliability of routes calculated in Africa and India.
 
 To provide a way to investigate the routes' reliability, they introduced a tool called ohsome that attempts to explain the quality of data used in calculating a route by looking at the metadata associated with it (e.g. how long ago was the speed on a certain street updated?). I'm definitely going back later to use this tool for myself and explore its capabilities more thoroughly.
+
+#### Links
 
 - [ohsome](https://dashboard.ohsome.org/)
 - [Slides](https://pretalx.com/media/fossgis2026/submissions/QKQH9H/resources/2026-03-27_FOS_76NIDgh.pdf)
@@ -116,6 +126,8 @@ Having conducted a walkability analysis myself for my [masters thesis](https://a
   </span>
 </div>
 
+#### Links
+
 - [Slides](https://pretalx.com/media/fossgis2026/submissions/WBWRFD/resources/FOSSGIS_2026_-_KArcnLO.pdf)
 
 ---
@@ -127,7 +139,6 @@ This day differed from the two previous conference days I attended. The format w
 ### Verbesserungen für [openstreetmap.org](https://openstreetmap.org)
 
 **EN:** *Improvements for [openstreetmap.org](https://openstreetmap.org)*
-
 
 Eike presented a set a improvements that we he wants to make to [openstreetmap.org](https://openstreetmap.org) by switching to a system that relies on vector tiles rather than the raster tiles currently being used. Having just learned more about vector tiles the day before, I was all ears and found [the demo](https://maps.eike.se/) that he share very interesting!
 
@@ -147,6 +158,8 @@ In particular, I was super impressed by their parking place analysis (image belo
     <i>Screenshot from OpenStreetMap Parkraum Projekt</i>
   </span>
 </div>
+
+#### Links
 
 - [Parkraum Projekt](https://parkraum.osm-verkehrswende.org/)
 - [OSM Verkehrswende](https://osm-verkehrswende.org)
