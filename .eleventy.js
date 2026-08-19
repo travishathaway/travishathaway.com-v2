@@ -7,9 +7,10 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const CleanCSS = require("clean-css");
 const { minify } = require("terser");
-const { HtmlBasePlugin } = require("@11ty/eleventy");
 
-module.exports = function(eleventyConfig) {
+module.exports = async function(eleventyConfig) {
+  const { HtmlBasePlugin } = await import("@11ty/eleventy");
+
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {

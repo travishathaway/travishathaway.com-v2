@@ -11,6 +11,22 @@ eleventyNavigation:
 
 Below are a list of the talks I have given and links to the resource material and videos.
 
+<h2 class="muted">PyCon DE 2026</h2>
+
+### Exploring Germany's Urban Geography with Census and OpenStreetMap Data
+
+<div class="responsive-video">
+  <iframe src="https://www.youtube.com/embed/1LEXE8H0BaE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+#### Resources
+
+- [Slides](https://pyconde2026.thath.net/index.html)
+- [Hospital Accessibility Report](https://emsde.thath.net/)
+- [GitHub project](https://github.com/travishathaway/ems-germany-analysis)
+
+---
+
 <h2 class="muted">EuroPython 2025</h2>
 
 ### Let's talk: Communication and Consensus Building in Open-Source

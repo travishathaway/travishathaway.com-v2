@@ -1,0 +1,25 @@
+services:
+  dev:
+    image: node:22-bullseye
+    working_dir: /app
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    ports:
+      - "8080:8080"
+    command: sh -c "npm install && npm run serve -- --port=8080"
+    stdin_open: true
+    tty: true
+
+  shell:
+    image: node:22-bullseye
+    working_dir: /app
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    entrypoint: sh -c "npm install && exec bash"
+    stdin_open: true
+    tty: true
+
+volumes:
+  node_modules:
