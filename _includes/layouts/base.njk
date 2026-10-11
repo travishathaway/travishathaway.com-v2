@@ -82,6 +82,7 @@
         {%- for entry in collections.all | eleventyNavigation %}
           <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}"><a href="{{ entry.url | url }}">{{ entry.title }}</a></li>
         {%- endfor %}
+          <li class="nav-item"><a href="https://resume.thath.net" target="_blank" rel="noopener noreferrer">Resume <i class="fa-solid fa-arrow-up-right-from-square fa-xs" style="margin-left: 0.4em;" aria-hidden="true"></i></a></li>
         </ul>
       </nav>
     </header>
